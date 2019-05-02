@@ -5,22 +5,26 @@ set nocompatible
 " ; The leader
 let mapleader=";"
 
-
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Colors
 syntax enable
-colorscheme onehalfdark
+colorscheme material
+let g:material_terminal_italics = 1
 let g:lightline = {
-      \ 'colorscheme': 'onehalfdark',
+      \ 'colorscheme': 'material_vim',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ }
 
-set colorcolumn=80 " some community guideline no code furthan 80 column
-highlight ColorColumn ctermbg=237
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+"set colorcolumn=80 " some community guideline no code furthan 80 column
+"highlight ColorColumn ctermbg=237
 
 " UI
 set number " show line number
@@ -34,6 +38,7 @@ set noerrorbells visualbell t_vb= " No Bell Sound please
 set ruler
 set wildmenu " visual autocomplete for command menu
 set laststatus=2 " showing statusbar
+set nowrap
 
 " Characters
 set encoding=utf-8 " output encoding that is shown in the terminal.
@@ -127,17 +132,16 @@ inoremap <right> :tabNext<cr>
 nnoremap <left> :tabprevious<cr>
 nnoremap <right> :tabNext<cr>
 
+" Mappings for moving lines and preserving indentation
+" http://vim.wikia.com/wiki/Moving_lines_up_or_down
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
-
-" move to beginning/end of line
-nnoremap B ^
-nnoremap E $
-
-" $/^ does not do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
 
 " nerdCommenter ---------- "
 " Single line comment
@@ -180,23 +184,6 @@ xnoremap x d
 nnoremap xx dd
 nnoremap X D
 
-" Gui Vim Settings
-if has("gui_running")
-	set guifont=Fira Code\ R:h16
-	set linespace=4
-	set guioptions-=T  "Remove toolbar
-	set guioptions=aAce
-  set undofile
-  set undodir=~/.vim/backup
-	set guioptions-=b
-  set guioptions-=R
-  set guioptions-=r
-  set guioptions-=L
-  set guioptions+=a
-  set guioptions-=e
-endif
-
-
 " ale syntax checker
 let g:ale_linters_explicit = 1 " only linters which i want
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
@@ -235,11 +222,14 @@ augroup END
 let g:prettier#quickfix_enabled = 0
 let g:prettier#config#print_width = 120
 let g:prettier#config#single_quote = 'true'
-let g:prettier#config#parser = 'flow'
+let g:prettier#config#parser = 'babylon'
 let g:prettier#config#bracket_spacing = 'true'
 
 let g:prettier#autoformat = 0
-autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync"
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+
+" Use JSON in .babelrc files
+autocmd BufRead,BufNewFile .babelrc setfiletype json
 
 " Autoload .vimrc file
 augroup sourceVimrc

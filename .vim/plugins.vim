@@ -36,8 +36,10 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
-" UI
+" Colorschemes
 Plug 'itchyny/lightline.vim'
+"Plug 'hzchirs/vim-material'
+Plug 'kaicataldo/material.vim'
 
 " Buffer to BufferTab
 Plug 'ap/vim-buftabline'
@@ -45,21 +47,14 @@ Plug 'ap/vim-buftabline'
 " copy/cut/paste
 Plug 'svermeulen/vim-cutlass'
 
+" For Tab Completion
+Plug 'ervandew/supertab'
+
 " For AutoCompletion
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+
 let g:deoplete#enable_at_startup = 1
 "Syntax Checking
 Plug 'w0rp/ale'

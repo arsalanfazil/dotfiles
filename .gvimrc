@@ -1,0 +1,10 @@
+set guifont=Fira\ Code\ 14
+set linespace=6
+set guioptions-=T  "Remove toolbar
+set guioptions=aAce
+set guioptions-=b
+set guioptions-=R
+set guioptions-=r
+set guioptions-=L
+set guioptions+=a
+set guioptions-=e
