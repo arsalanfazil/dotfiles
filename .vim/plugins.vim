@@ -6,9 +6,12 @@ Plug 'tpope/vim-sensible'
 " Language Pack
 Plug 'sheerun/vim-polyglot'
 "Plugin 'vim-ruby/vim-ruby'
-"Plugin 'pangloss/vim-javascript'
 "Plugin 'elixir-editors/vim-elixir'
 "Plugin 'moll/vim-node'
+"Plug 'pangloss/vim-javascript'
+
+" Nice JSON Syntax highlighter
+Plug 'elzr/vim-json'
 
 " Vim utilities/helpers plugin
 Plug 'tpope/vim-surround'
@@ -56,6 +59,8 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
 let g:deoplete#enable_at_startup = 1
+
 "Syntax Checking
 Plug 'w0rp/ale'
+
 call plug#end()

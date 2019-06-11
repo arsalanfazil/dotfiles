@@ -92,7 +92,7 @@ set sidescrolloff=5
 
 augroup myfiletypes
 	autocmd!
-	autocmd FileType ruby,html,eruby,yaml,markdown set ai sw=2 sts=2 et
+	autocmd FileType js,ruby,html,eruby,yaml,markdown set ai sw=2 sts=2 et
 augroup END
 
 " Mapping
@@ -101,7 +101,7 @@ nmap <Leader><space> :nohlsearch<cr>
 " Edit .vimrc file
 nmap <Leader>ev :edit $MYVIMRC<cr>
 " Edit plugin.vim file
-nmap <Leader>eb :tabnew ~/.vim/plugins.vim<cr>
+nmap <Leader>eb :edit ~/.vim/plugins.vim<cr>
 
 " Buffer Switching
 map <Leader>p :bp<cr>
@@ -162,13 +162,10 @@ let g:ctrlp_working_path_mode = 0
 " Emmet
 let g:user_emmet_leader_key=','
 let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
+  \  'javascript' : {
     \      'extends' : 'jsx',
     \  },
   \}
-
-" Vim JSX
-let g:jsx_ext_required = 0
 
 " NerdCommenter
 let g:NERDCompactSexyComs = 1 " Use compact syntax for prettified multi-line comments
@@ -198,10 +195,12 @@ let g:ale_linters = {
 \ 'css': ['stylelint', 'prettier'],
 \ 'scss': ['stylelint', 'prettier'],
 \}
+
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
+\   'css': ['prettier'],
 \}
+
 " don't lint production js and css files
 let g:ale_pattern_options = {
 \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
@@ -210,26 +209,22 @@ let g:ale_pattern_options = {
 let g:airline#extensions#ale#enabled = 1
 let g:ale_list_window_size = 5
 let g:ale_fix_on_save = 1 " auto fix on save
-" How can I check JSX files with both stylelint and eslint?
-augroup FiletypeGroup
-    autocmd!
-    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-augroup END
 
 
-" Prettier
-" when running at every change you may want to disable quickfix
-let g:prettier#quickfix_enabled = 0
-let g:prettier#config#print_width = 120
-let g:prettier#config#single_quote = 'true'
-let g:prettier#config#parser = 'babylon'
-let g:prettier#config#bracket_spacing = 'true'
-
+" Prettier Configuration
+let g:prettier#config#bracket_spacing="true"
+let g:prettier#config#jsx_bracket_same_line="false"
+let g:prettier#config#parser="babylon"
+let g:prettier#config#single_quote="true"
+let g:prettier#config#trailing_comma="none"
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
 " Use JSON in .babelrc files
 autocmd BufRead,BufNewFile .babelrc setfiletype json
+
+" Vim JSX
+let g:jsx_ext_required = 0
 
 " Autoload .vimrc file
 augroup sourceVimrc
