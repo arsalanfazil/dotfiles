@@ -9,10 +9,9 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Colors
 syntax enable
-colorscheme material
+colorscheme dracula
 let g:material_terminal_italics = 1
 let g:lightline = {
-      \ 'colorscheme': 'material_vim',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]

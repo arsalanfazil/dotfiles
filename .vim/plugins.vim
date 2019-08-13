@@ -1,5 +1,8 @@
 call plug#begin('~/.vim/bundle')
 
+" Smart Screen
+Plug 'mhinz/vim-startify'
+
 " Default Settings
 Plug 'tpope/vim-sensible'
 
@@ -9,6 +12,9 @@ Plug 'sheerun/vim-polyglot'
 "Plugin 'elixir-editors/vim-elixir'
 "Plugin 'moll/vim-node'
 "Plug 'pangloss/vim-javascript'
+
+Plug 'StanAngeloff/php.vim'
+Plug 'phpactor/phpactor'
 
 " Nice JSON Syntax highlighter
 Plug 'elzr/vim-json'
@@ -42,6 +48,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Colorschemes
 Plug 'itchyny/lightline.vim'
 "Plug 'hzchirs/vim-material'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'kaicataldo/material.vim'
 
 " Buffer to BufferTab
@@ -55,6 +62,7 @@ Plug 'ervandew/supertab'
 
 " For AutoCompletion
 Plug 'Shougo/deoplete.nvim'
+" required neo vim installed
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
