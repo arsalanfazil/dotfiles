@@ -8,15 +8,15 @@ let mapleader=";"
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Colors
+
 syntax enable
-colorscheme dracula
+set background=dark
+let base16colorspace=256
 let g:material_terminal_italics = 1
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ }
+colorscheme material
+"colorscheme base16-bright
+"colorscheme base16-irblack
+
 
 if (has("termguicolors"))
   set termguicolors
@@ -27,16 +27,18 @@ endif
 
 " UI
 set number " show line number
-set showcmd " show command in bottom bar
+set signcolumn=yes
+set noshowcmd " show command in bottom bar
+set noshowmode
 set cursorline " highlight current line
 set lazyredraw
 set showmatch " highlight matching parenthesis
 set splitbelow " Split vertically default below
 set splitright " Split horizentally default right
 set noerrorbells visualbell t_vb= " No Bell Sound please
-set ruler
+set noruler
 set wildmenu " visual autocomplete for command menu
-set laststatus=2 " showing statusbar
+set laststatus=0 " showing statusbar
 set nowrap
 
 " Characters
@@ -86,13 +88,14 @@ set foldnestmax=10  " 10 nested fold max
 set foldmethod=indent " fold based on indent level
 
 set report=0
-set scrolloff=1
+set scrolloff=0
 set sidescrolloff=5
 
 augroup myfiletypes
 	autocmd!
 	autocmd FileType js,ruby,html,eruby,yaml,markdown set ai sw=2 sts=2 et
 augroup END
+
 
 " Mapping
 " Off highlight Search
@@ -211,11 +214,7 @@ let g:ale_fix_on_save = 1 " auto fix on save
 
 
 " Prettier Configuration
-let g:prettier#config#bracket_spacing="true"
-let g:prettier#config#jsx_bracket_same_line="false"
 let g:prettier#config#parser="babylon"
-let g:prettier#config#single_quote="true"
-let g:prettier#config#trailing_comma="none"
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 

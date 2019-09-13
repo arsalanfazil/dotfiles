@@ -46,13 +46,15 @@ Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Colorschemes
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
 "Plug 'hzchirs/vim-material'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'reewr/vim-monokai-phoenix'
+Plug 'ayu-theme/ayu-vim'
+Plug 'tomasr/molokai'
+Plug 'chriskempson/base16-vim'
 Plug 'kaicataldo/material.vim'
 
-" Buffer to BufferTab
-Plug 'ap/vim-buftabline'
 
 " copy/cut/paste
 Plug 'svermeulen/vim-cutlass'
