@@ -1,4 +1,4 @@
-set guifont=Fira\ Code\ 14
+set guifont=Hack\ 14
 set linespace=7
 set guioptions-=T  "Remove toolbar
 set guioptions=aAce
