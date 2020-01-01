@@ -133,10 +133,12 @@ noremap <Up> <NOP>
 noremap <down> <NOP>
 
 " Tabs Switching
-inoremap <left> :tabprevious<cr>
-inoremap <right> :tabNext<cr>
-nnoremap <left> :tabprevious<cr>
-nnoremap <right> :tabNext<cr>
+inoremap <left> :bprevious<cr>
+inoremap <right> :bnext<cr>
+nnoremap <left> :bprevious<cr>
+nnoremap <right> :bnext<cr>
+inoremap <C-w> :bd<cr>
+nnoremap <C-w> :bd<cr>
 
 " Mappings for moving lines and preserving indentation
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down

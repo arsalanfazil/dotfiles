@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/bundle')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ap/vim-buftabline'
 
 " Smart Screen
 Plug 'mhinz/vim-startify'
