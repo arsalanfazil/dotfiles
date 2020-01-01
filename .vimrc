@@ -5,6 +5,7 @@ set nocompatible
 " ; The leader
 let mapleader=";"
 
+
 " Colors
 syntax enable
 set background=dark
@@ -109,11 +110,6 @@ nmap <Leader>ev :edit $MYVIMRC<cr>
 " Edit plugin.vim file
 nmap <Leader>eb :edit ~/.vim/plugins.vim<cr>
 
-" Buffer Switching
-map <Leader>p :bp<cr>
-map <Leader>n :bn<cr>
-map <Leader>d :bd<cr>
-
 " split movement mapping
 nmap <c-k> <c-w><c-k>
 nmap <c-j> <c-w><c-j>
@@ -139,6 +135,7 @@ nnoremap <left> :bprevious<cr>
 nnoremap <right> :bnext<cr>
 inoremap <C-w> :bd<cr>
 nnoremap <C-w> :bd<cr>
+
 
 " Mappings for moving lines and preserving indentation
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
@@ -183,12 +180,6 @@ let g:NERDTreeWinPos = 'right' " NerdTree
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['scp://.*']
 
-" cutlass
-nnoremap x d
-xnoremap x d
-nnoremap xx dd
-nnoremap X D
-
 " ale syntax checker
 let g:ale_linters_explicit = 1 " only linters which i want
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
@@ -230,21 +221,25 @@ autocmd BufRead,BufNewFile .babelrc setfiletype json
 " Vim JSX
 let g:jsx_ext_required = 0
 
-" Autoload .vimrc file
-augroup sourceVimrc
-	autocmd!
-	autocmd BufWritePost .vimrc source %
-	autocmd BufWritePost ~/.vim/plugins.vim source ~/.vimrc
-augroup END
-
 " coc.vim plugin settings
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -254,12 +249,6 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -348,3 +337,12 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+
+" Autoload .vimrc file
+augroup sourceVimrc
+	autocmd!
+	autocmd BufWritePost .vimrc source %
+	autocmd BufWritePost ~/.vim/plugins.vim source ~/.vimrc
+augroup END

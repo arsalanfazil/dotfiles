@@ -58,10 +58,6 @@ Plug 'tomasr/molokai'
 Plug 'chriskempson/base16-vim'
 Plug 'kaicataldo/material.vim'
 
-
-" copy/cut/paste
-Plug 'svermeulen/vim-cutlass'
-
 "Syntax Checking
 Plug 'w0rp/ale'
 
