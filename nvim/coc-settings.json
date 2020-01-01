@@ -1,0 +1,18 @@
+{
+  "codeLens.enable": true,
+  "solargraph.useBundler": true,
+  "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
+  "prettier.semi": "false",
+  "prettier.trailingComma": "all",
+  "prettierconfig": true,
+  "importCost.typescriptExtensions": [
+    "\\.tsx?$"
+  ],
+  "importCost.javascriptExtensions": [
+    "\\.jsx?$"
+  ],
+  "importCost.bundleSizeDecoration": "both",
+  "importCost.showCalculatingDecoration": true,
+  "importCost.debug": false
+}
+

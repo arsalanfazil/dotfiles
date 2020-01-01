@@ -7,7 +7,7 @@ Plug 'ap/vim-buftabline'
 Plug 'mhinz/vim-startify'
 
 " Default Settings
-Plug 'tpope/vim-sensible'
+"Plug 'tpope/vim-sensible'
 
 " Language Pack
 Plug 'sheerun/vim-polyglot'
@@ -20,20 +20,20 @@ Plug 'StanAngeloff/php.vim'
 Plug 'phpactor/phpactor'
 
 " Nice JSON Syntax highlighter
-Plug 'elzr/vim-json'
+"Plug 'elzr/vim-json'
 
 " Vim utilities/helpers plugin
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-endwise'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-endwise'
+"Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mattn/emmet-vim'
-Plug 'Valloric/MatchTagAlways'
-Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-ragtag'
+"Plug 'mattn/emmet-vim'
+"Plug 'Valloric/MatchTagAlways'
+"Plug 'scrooloose/nerdcommenter'
+"Plug 'tpope/vim-ragtag'
 
 " autoread edited file outside vim
-Plug 'djoshea/vim-autoread'
+"Plug 'djoshea/vim-autoread'
 
 " filesystem exploration
 Plug 'scrooloose/nerdtree'
@@ -45,8 +45,8 @@ Plug 'dharanasoft/rtf-highlight'
 Plug 'editorconfig/editorconfig-vim'
 
 " Specific for JavaScript Development
-Plug 'mxw/vim-jsx'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+"Plug 'mxw/vim-jsx'
+"Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Colorschemes
 "Plug 'itchyny/lightline.vim'
@@ -59,6 +59,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'kaicataldo/material.vim'
 
 "Syntax Checking
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 
 call plug#end()

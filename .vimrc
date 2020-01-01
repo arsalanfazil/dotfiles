@@ -106,27 +106,23 @@ augroup END
 " Off highlight Search
 nmap <Leader><space> :nohlsearch<cr>
 " Edit .vimrc file
-nmap <Leader>ev :edit $MYVIMRC<cr>
+nmap <Leader>evv :edit $MYVIMRC<cr>
+nmap <Leader>ev :edit ~/.vimrc<cr>
 " Edit plugin.vim file
 nmap <Leader>eb :edit ~/.vim/plugins.vim<cr>
+nmap <Leader>es :edit ~/.config/nvim/coc-settings.json<cr>
 
 " split movement mapping
-nmap <c-k> <c-w><c-k>
-nmap <c-j> <c-w><c-j>
-nmap <c-l> <c-w><c-l>
-nmap <c-h> <c-w><c-h>
+"nmap <c-k> <c-w><c-k>
+"nmap <c-j> <c-w><c-j>
+"nmap <c-l> <c-w><c-l>
+"nmap <c-h> <c-w><c-h>
 
 " NerdTree
 map <C-B> :NERDTreeToggle<CR>
 
 " space open/closed folds
 nnoremap <space> za
-
-" Movement
-inoremap <Up> <NOP>
-inoremap <down> <NOP>
-noremap <Up> <NOP>
-noremap <down> <NOP>
 
 " Tabs Switching
 inoremap <left> :bprevious<cr>
@@ -139,23 +135,20 @@ nnoremap <C-w> :bd<cr>
 
 " Mappings for moving lines and preserving indentation
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
-nnoremap <CR><down> :m .+1<CR>==
-nnoremap <CR><Up> :m .-2<CR>==
-vnoremap <CR><down> :m '>+1<CR>gv=gv
-vnoremap <CR><Up> :m '<-2<CR>gv=gv
+"nnoremap <CR><down> :m .+1<CR>==
+"nnoremap <CR><Up> :m .-2<CR>==
+"vnoremap <CR><down> :m '>+1<CR>gv=gv
+"vnoremap <CR><Up> :m '<-2<CR>gv=gv
 
 " move vertically by visual line
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 " nerdCommenter ---------- "
 " Single line comment
-map <C-\> <Leader>ci
+"map <C-\> <Leader>ci
 " Multi line comment
-map <C-S-\> <Leader>cm
-
-" autocomplete with css
-set omnifunc=syntaxcomplete#Complete
+"map <C-S-\> <Leader>cm
 
 " --------- Plugins Configuration -------
 " CtrlP Settings
@@ -165,61 +158,63 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 
 " Emmet
-let g:user_emmet_leader_key=','
-let g:user_emmet_settings = {
-  \  'javascript' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
+"let g:user_emmet_leader_key=','
+"let g:user_emmet_settings = {
+"  \  'javascript' : {
+"    \      'extends' : 'jsx',
+"    \  },
+"  \}
 
 " NerdCommenter
-let g:NERDCompactSexyComs = 1 " Use compact syntax for prettified multi-line comments
-let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
-let g:NERDTreeWinPos = 'right' " NerdTree
+"let g:NERDCompactSexyComs = 1 " Use compact syntax for prettified multi-line comments
+"let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
+"let g:NERDTreeWinPos = 'right' " NerdTree
 
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['scp://.*']
 
 " ale syntax checker
-let g:ale_linters_explicit = 1 " only linters which i want
-let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-let g:ale_sign_warning = '.'
-let g:ale_lint_on_text_changed = 'never' " only run when file svae
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
-let g:ale_linters = {
-\ 'javascript': ['eslint'],
-\ 'jsx': ['stylelint', 'eslint'],
-\ 'ruby': ['rubocop'],
-\ 'html': ['prettier'],
-\ 'css': ['stylelint', 'prettier'],
-\ 'scss': ['stylelint', 'prettier'],
-\}
+"let g:ale_linters_explicit = 1 " only linters which i want
+"let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+"let g:ale_sign_warning = '.'
+"let g:ale_lint_on_text_changed = 'never' " only run when file svae
+"let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+"let g:ale_linters = {
+"\ 'javascript': ['eslint'],
+"\ 'jsx': ['stylelint', 'eslint'],
+"\ 'ruby': ['rubocop'],
+"\ 'html': ['prettier'],
+"\ 'css': ['stylelint', 'prettier'],
+"\ 'scss': ['stylelint', 'prettier'],
+"\}
 
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'css': ['prettier'],
-\}
+"let g:ale_fixers = {
+"\   'javascript': ['eslint'],
+"\   'css': ['prettier'],
+"\}
 
 " don't lint production js and css files
-let g:ale_pattern_options = {
-\ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-\ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-\}
-let g:airline#extensions#ale#enabled = 1
-let g:ale_list_window_size = 5
-let g:ale_fix_on_save = 1 " auto fix on save
+"let g:ale_pattern_options = {
+"\ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+"\ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+"\}
+"let g:airline#extensions#ale#enabled = 1
+"let g:ale_list_window_size = 5
+"let g:ale_fix_on_save = 1 " auto fix on save
 
 
 " Prettier Configuration
-let g:prettier#config#parser="babylon"
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+"let g:prettier#config#parser="babylon"
+"let g:prettier#autoformat = 0
+"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
 " Use JSON in .babelrc files
-autocmd BufRead,BufNewFile .babelrc setfiletype json
+"autocmd BufRead,BufNewFile .babelrc setfiletype json
 
 " Vim JSX
-let g:jsx_ext_required = 0
+"let g:jsx_ext_required = 0
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " coc.vim plugin settings
 
@@ -338,7 +333,29 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-
+" coc extensions
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ 'coc-solargraph',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-yaml',
+  \ 'coc-python',
+  \ 'coc-emmet',
+  \ 'coc-elixir',
+  \ 'coc-markdownlint',
+  \ 'coc-prettier',
+  \ 'coc-pairs',
+  \ 'coc-import-cost',
+  \ 'coc-docker',
+  \ 'coc-sql',
+  \ 'coc-styled-components'
+  \ ]
 
 " Autoload .vimrc file
 augroup sourceVimrc
