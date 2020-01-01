@@ -1,5 +1,7 @@
 call plug#begin('~/.vim/bundle')
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Smart Screen
 Plug 'mhinz/vim-startify'
 
@@ -58,17 +60,6 @@ Plug 'kaicataldo/material.vim'
 
 " copy/cut/paste
 Plug 'svermeulen/vim-cutlass'
-
-" For Tab Completion
-Plug 'ervandew/supertab'
-
-" For AutoCompletion
-Plug 'Shougo/deoplete.nvim'
-" required neo vim installed
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-
-let g:deoplete#enable_at_startup = 1
 
 "Syntax Checking
 Plug 'w0rp/ale'
