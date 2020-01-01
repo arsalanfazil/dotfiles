@@ -6,4 +6,5 @@ ln -s ~/.dotfiles/.gitignore_global ~/
 ln -s ~/.dotfiles/.gemrc ~/
 ln -s ~/.dotfiles/.vim ~/
 ln -s ~/.dotfiles/.gvimrc ~/
+ln -s ~/.dotfiles/init.vim ~/.config/
 
