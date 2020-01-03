@@ -2,9 +2,12 @@
   "codeLens.enable": true,
   "solargraph.useBundler": true,
   "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
-  "prettier.semi": "false",
-  "prettier.trailingComma": "all",
-  "prettierconfig": true,
+"emmet.triggerExpansionOnTab": true,
+"prettier.requireConfig": true,
+    "prettier.semi": false,
+    "prettier.trailingComma": "es5",
+    "prettier.singleQuote": true,
+    "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "jsx", "javascript", "javascriptreact"],
   "importCost.typescriptExtensions": [
     "\\.tsx?$"
   ],
