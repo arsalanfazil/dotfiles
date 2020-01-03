@@ -22,7 +22,7 @@ if (has("termguicolors"))
 endif
 
 "set colorcolumn=80 " some community guideline no code furthan 80 column
-"highlight ColorColumn ctermbg=237
+"highlight ColorColumn ctermbg=200
 
 " UI
 set number " show line number
@@ -113,10 +113,10 @@ nmap <Leader>eb :edit ~/.vim/plugins.vim<cr>
 nmap <Leader>es :edit ~/.config/nvim/coc-settings.json<cr>
 
 " split movement mapping
-"nmap <c-k> <c-w><c-k>
-"nmap <c-j> <c-w><c-j>
-"nmap <c-l> <c-w><c-l>
-"nmap <c-h> <c-w><c-h>
+nmap <c-k> <c-w><c-k>
+nmap <c-j> <c-w><c-j>
+nmap <c-l> <c-w><c-l>
+nmap <c-h> <c-w><c-h>
 
 " NerdTree
 map <C-B> :NERDTreeToggle<CR>
@@ -136,20 +136,26 @@ nnoremap <C-w> :bd<cr>
 
 " Mappings for moving lines and preserving indentation
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
-"nnoremap <CR><down> :m .+1<CR>==
-"nnoremap <CR><Up> :m .-2<CR>==
-"vnoremap <CR><down> :m '>+1<CR>gv=gv
-"vnoremap <CR><Up> :m '<-2<CR>gv=gv
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " move vertically by visual line
-"nnoremap j gj
-"nnoremap k gk
+nnoremap j gj
+nnoremap k gk
 
 " nerdCommenter ---------- "
 " Single line comment
-"map <C-\> <Leader>ci
+nmap <C-\> <Leader>ci
+vmap <C-\> <Leader>ci
 " Multi line comment
-"map <C-S-\> <Leader>cm
+nmap <C-S-\> <Leader>cm
+vmap <C-S-\> <Leader>cm
+let g:NERDCompactSexyComs = 1 " Use compact syntax for prettified multi-line comments
+let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
 
 " --------- Plugins Configuration -------
 " CtrlP Settings
@@ -158,61 +164,9 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 
-" Emmet
-"let g:user_emmet_leader_key=','
-"let g:user_emmet_settings = {
-"  \  'javascript' : {
-"    \      'extends' : 'jsx',
-"    \  },
-"  \}
-
-" NerdCommenter
-"let g:NERDCompactSexyComs = 1 " Use compact syntax for prettified multi-line comments
-"let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
 
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['scp://.*']
-
-" ale syntax checker
-"let g:ale_linters_explicit = 1 " only linters which i want
-"let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-"let g:ale_sign_warning = '.'
-"let g:ale_lint_on_text_changed = 'never' " only run when file svae
-"let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
-"let g:ale_linters = {
-"\ 'javascript': ['eslint'],
-"\ 'jsx': ['stylelint', 'eslint'],
-"\ 'ruby': ['rubocop'],
-"\ 'html': ['prettier'],
-"\ 'css': ['stylelint', 'prettier'],
-"\ 'scss': ['stylelint', 'prettier'],
-"\}
-
-"let g:ale_fixers = {
-"\   'javascript': ['eslint'],
-"\   'css': ['prettier'],
-"\}
-
-" don't lint production js and css files
-"let g:ale_pattern_options = {
-"\ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-"\ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-"\}
-"let g:airline#extensions#ale#enabled = 1
-"let g:ale_list_window_size = 5
-"let g:ale_fix_on_save = 1 " auto fix on save
-
-
-" Prettier Configuration
-"let g:prettier#config#parser="babylon"
-"let g:prettier#autoformat = 0
-"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
-
-" Use JSON in .babelrc files
-"autocmd BufRead,BufNewFile .babelrc setfiletype json
-
-" Vim JSX
-"let g:jsx_ext_required = 0
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
