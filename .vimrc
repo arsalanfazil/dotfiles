@@ -113,10 +113,10 @@ nmap <Leader>eb :edit ~/.vim/plugins.vim<cr>
 nmap <Leader>es :edit ~/.config/nvim/coc-settings.json<cr>
 
 " split movement mapping
-nmap <c-k> <c-w><c-k>
-nmap <c-j> <c-w><c-j>
-nmap <c-l> <c-w><c-l>
-nmap <c-h> <c-w><c-h>
+nmap <C-k> <c-w><c-k>
+nmap <C-j> <c-w><c-j>
+nmap <C-l> <c-w><c-l>
+nmap <C-h> <c-w><c-h>
 
 " NerdTree
 map <C-B> :NERDTreeToggle<CR>
@@ -130,8 +130,8 @@ inoremap <left> :bprevious<cr>
 inoremap <right> :bnext<cr>
 nnoremap <left> :bprevious<cr>
 nnoremap <right> :bnext<cr>
-inoremap <C-w> :bd<cr>
-nnoremap <C-w> :bd<cr>
+inoremap <C-d> :bd<cr>
+nnoremap <C-d> :bd<cr>
 
 
 " Mappings for moving lines and preserving indentation
