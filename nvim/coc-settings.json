@@ -1,13 +1,13 @@
 {
   "codeLens.enable": true,
   "solargraph.useBundler": true,
-  "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
-"emmet.triggerExpansionOnTab": true,
-"prettier.requireConfig": true,
+  "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact", "erb": "html"},
+  "files.associations": {"*.erb": "erb"},
+  "prettier.requireConfig": true,
     "prettier.semi": false,
     "prettier.trailingComma": "es5",
     "prettier.singleQuote": true,
-    "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "jsx", "javascript", "javascriptreact"],
+    "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "jsx", "javascript", "javascriptreact", "ruby"],
   "importCost.typescriptExtensions": [
     "\\.tsx?$"
   ],

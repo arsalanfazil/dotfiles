@@ -1,5 +1,9 @@
 call plug#begin('~/.vim/bundle')
 
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ap/vim-buftabline'
 
@@ -7,11 +11,11 @@ Plug 'ap/vim-buftabline'
 Plug 'mhinz/vim-startify'
 
 " Language Pack
-Plug 'sheerun/vim-polyglot'
-"Plugin 'vim-ruby/vim-ruby'
+"Plug 'sheerun/vim-polyglot'
+Plug 'vim-ruby/vim-ruby'
 "Plugin 'elixir-editors/vim-elixir'
 "Plugin 'moll/vim-node'
-"Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
 Plug 'StanAngeloff/php.vim'
 Plug 'phpactor/phpactor'
