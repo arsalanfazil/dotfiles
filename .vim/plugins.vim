@@ -16,6 +16,7 @@ Plug 'vim-ruby/vim-ruby'
 "Plugin 'elixir-editors/vim-elixir'
 "Plugin 'moll/vim-node'
 Plug 'pangloss/vim-javascript'
+Plug 'honza/vim-snippets'
 
 Plug 'StanAngeloff/php.vim'
 Plug 'phpactor/phpactor'

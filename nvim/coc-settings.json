@@ -1,7 +1,7 @@
 {
   "codeLens.enable": true,
   "solargraph.useBundler": true,
-  "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact", "erb": "html"},
+  "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact", "eruby": "html"},
   "files.associations": {"*.erb": "erb"},
   "prettier.requireConfig": true,
     "prettier.semi": false,

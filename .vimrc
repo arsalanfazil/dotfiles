@@ -303,7 +303,8 @@ let g:coc_global_extensions = [
   \ 'coc-import-cost',
   \ 'coc-docker',
   \ 'coc-sql',
-  \ 'coc-styled-components'
+  \ 'coc-styled-components',
+  \ 'coc-marketplace'
   \ ]
 
 let g:LanguageClient_serverCommands = {
