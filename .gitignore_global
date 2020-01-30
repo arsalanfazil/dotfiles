@@ -47,5 +47,6 @@ tags
 *.swm
 
 .vim/bundle
+.vim/sessions/
 dist
 .cache/
