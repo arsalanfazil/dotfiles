@@ -1,30 +1,22 @@
 call plug#begin('~/.vim/bundle')
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ap/vim-buftabline'
-
-" Smart Screen
-Plug 'mhinz/vim-startify'
-
-" Language Pack
-Plug 'sheerun/vim-polyglot'
-Plug 'vim-ruby/vim-ruby'
-"Plugin 'elixir-editors/vim-elixir'
-"Plugin 'moll/vim-node'
-Plug 'pangloss/vim-javascript'
-Plug 'honza/vim-snippets'
-
-Plug 'StanAngeloff/php.vim'
-Plug 'phpactor/phpactor'
-
-" Vim utilities/helpers plugin
+Plug 'wesQ3/vim-windowswap'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-endwise'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdcommenter'
+Plug 'mattn/emmet-vim'
+Plug 'ervandew/supertab'
+Plug 'alvan/vim-closetag'
+Plug 'valloric/matchtagalways'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+
+" snippets
+Plug 'honza/vim-snippets'
 
 " filesystem exploration
 Plug 'scrooloose/nerdtree'
@@ -34,6 +26,37 @@ Plug 'dharanasoft/rtf-highlight'
 
 " .editorconfig
 Plug 'editorconfig/editorconfig-vim'
+
+" fuzzy finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Every time you start vim, it gives you an inspiration quote.
+Plug 'mhinz/vim-startify'
+
+" Language Pack
+Plug 'hail2u/vim-css3-syntax'
+Plug 'vim-ruby/vim-ruby'
+Plug 'elixir-editors/vim-elixir'
+"Plugin 'moll/vim-node'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'StanAngeloff/php.vim'
+Plug 'phpactor/phpactor'
+Plug 'plasticboy/vim-markdown'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'jparise/vim-graphql'
+Plug 'lifepillar/pgsql.vim'
+Plug 'elzr/vim-json'
+Plug 'sheerun/vim-polyglot'
+
+" Programming Language Tools
+Plug 'prettier/vim-prettier'
+Plug 'mattn/webapi-vim'
+Plug 'jxnblk/vim-mdx-js'
+
+" Linting Support
+Plug 'dense-analysis/ale'
 
 " Colorschemes
 "Plug 'itchyny/lightline.vim'
