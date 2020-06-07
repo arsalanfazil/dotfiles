@@ -197,6 +197,9 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 let g:ale_set_highlights = 0
 
+" for deoplete (completion plugin)
+let g:deoplete#enable_at_startup = 1
+
 "Autoload .vimrc file
 augroup sourceVimrc
 	autocmd!

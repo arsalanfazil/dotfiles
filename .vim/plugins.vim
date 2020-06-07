@@ -13,6 +13,7 @@ Plug 'ervandew/supertab'
 Plug 'alvan/vim-closetag'
 Plug 'valloric/matchtagalways'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-commentary'
 
 " snippets
@@ -49,11 +50,13 @@ Plug 'jparise/vim-graphql'
 Plug 'lifepillar/pgsql.vim'
 Plug 'elzr/vim-json'
 Plug 'sheerun/vim-polyglot'
+Plug 'chr4/nginx.vim'
 
 " Programming Language Tools
 Plug 'prettier/vim-prettier'
 Plug 'mattn/webapi-vim'
 Plug 'jxnblk/vim-mdx-js'
+Plug 'sunaku/vim-ruby-minitest'
 
 " Linting Support
 Plug 'dense-analysis/ale'
@@ -67,5 +70,13 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'tomasr/molokai'
 Plug 'chriskempson/base16-vim'
 Plug 'kaicataldo/material.vim'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 call plug#end()
