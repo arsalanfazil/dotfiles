@@ -17,6 +17,9 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-commentary'
 
 " snippets
+Plug 'tomtom/tlib_vim'
+Plug 'marcweber/vim-addon-mw-utils'
+Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 
 " filesystem exploration
@@ -57,6 +60,7 @@ Plug 'prettier/vim-prettier'
 Plug 'mattn/webapi-vim'
 Plug 'jxnblk/vim-mdx-js'
 Plug 'sunaku/vim-ruby-minitest'
+Plug 'tpope/vim-rails'
 
 " Linting Support
 Plug 'dense-analysis/ale'

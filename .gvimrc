@@ -1,5 +1,5 @@
-set guifont=Hack\ 14
-set linespace=7
+set guifont=Source\ Code\ Pro\ 12
+set linespace=6
 set guioptions-=T  "Remove toolbar
 set guioptions=aAce
 set guioptions-=b

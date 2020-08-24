@@ -1,6 +1,9 @@
 " Plug
 so ~/.vim/plugins.vim
 
+" for deoplete (completion plugin)
+let g:deoplete#enable_at_startup = 1
+
 set nocompatible
 " ; The leader
 let mapleader=";"
@@ -178,11 +181,15 @@ nnoremap = :Prettier<CR>
 " Use JSON in .babelrc files
 autocmd BufRead,BufNewFile .babelrc setfiletype json
 
+" vim-ruby
+let g:ruby_indent_assignment_style = 'variable'
+
 " jsx settings
 let g:polyglot_disabled = ['jsx']
 
 " ale linters
-let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+let b:ale_fixers = {'javascript': ['prettier', 'eslint'], 'ruby': ['standardrb']}
+let g:ale_linters = { 'ruby': ['standardrb', 'rubocop'], 'javascript': ['eslint'] }
 let g:ale_pattern_options = {
 \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
 \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
@@ -196,9 +203,6 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 let g:ale_set_highlights = 0
-
-" for deoplete (completion plugin)
-let g:deoplete#enable_at_startup = 1
 
 "Autoload .vimrc file
 augroup sourceVimrc
