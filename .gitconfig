@@ -3,9 +3,6 @@
 	editor = vim
 [color]
 	ui = auto
-[user]
-	name = Arsalan Fazil
-	email = arsalanfazil.dev@gmail.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
