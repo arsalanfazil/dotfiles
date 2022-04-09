@@ -1,66 +1,33 @@
 " Plug
 so ~/.vim/plugins.vim
 
-" for deoplete (completion plugin)
-let g:deoplete#enable_at_startup = 1
-
-set nocompatible
 " ; The leader
 let mapleader=";"
 
-
-" Colors
-syntax enable
-set background=dark
-let base16colorspace=256
-let g:material_terminal_italics = 1
-let g:material_theme_style = 'darker'
-colorscheme material
-
-"colorscheme base16-bright
-"colorscheme base16-irblack
-
-
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-"set colorcolumn=80 " some community guideline no code furthan 80 column
-"highlight ColorColumn ctermbg=200
-
-" UI
-set number " show line number
-set signcolumn=yes
-set noshowcmd " show command in bottom bar
-set noshowmode
-set cursorline " highlight current line
-set lazyredraw
+" ready set and go
+set nocompatible
+set colorcolumn=81
+set relativenumber
+set number
+set showcmd
 set showmatch " highlight matching parenthesis
 set splitbelow " Split vertically default below
 set splitright " Split horizentally default right
 set noerrorbells visualbell t_vb= " No Bell Sound please
-set noruler
-set wildmenu " visual autocomplete for command menu
-set laststatus=0 " showing statusbar
-set nowrap
-set cmdheight=2
-set updatetime=300
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-" Characters
+set ruler
+set laststatus=2 " showing statusbar
+set scrolloff=10
 set encoding=utf-8 " output encoding that is shown in the terminal.
 set spelllang=en_us
 set fileencoding=utf-8 " output encoding of the file that is written
 set autoread " auto-reloading a file in vim
+set cursorline " highlight current line
 
-" Misc
 set backspace=indent,eol,start
 set hidden " hides buffer instead of closing them.
-set history=999 " remember commands of command modes
+set history=50 " remember commands of command modes
 set undolevels=999 " go back more and more
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip " MacOSX/Linux
 
 " Search/Regex
 set gdefault " global default search
@@ -76,6 +43,7 @@ set softtabstop=2 " number of spaces in tab when editing
 set expandtab " tabs became spaces
 set shiftwidth=2
 set smarttab
+set smartindent
 set autoindent
 set complete-=1
 
@@ -96,32 +64,54 @@ set foldlevelstart=10 " open most folds by default
 set foldnestmax=10  " 10 nested fold max
 set foldmethod=indent " fold based on indent level
 
-set report=0
-set scrolloff=0
-set sidescrolloff=5
+set secure " prevent dangerous command
 
-augroup myfiletypes
-	autocmd!
-	autocmd FileType js,ruby,html,eruby,yaml,markdown set ai sw=2 sts=2 et
-augroup END
+"set wildmenu " visual autocomplete for command menu
+"set signcolumn=yes
+"set noshowmode
+"set lazyredraw
+"set cmdheight=2
+"set updatetime=300
+"set shortmess+=c
 
+"set report=0
+
+"augroup myfiletypes
+"	autocmd!
+"	autocmd FileType js,ruby,html,eruby,yaml,markdown set ai sw=2 sts=2 et
+"augroup END
+
+" Colors
+syntax enable
+colorscheme material
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'darker'
+let g:airline_theme = 'material'
+
+let ruby_space_errors = 1
+let c_space_errors = 1
+
+" enable spell checking on markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Mapping
 " Off highlight Search
-nmap <Leader><space> :nohlsearch<cr>
+nnoremap <Leader><space> :nohlsearch<cr>
+
+vnoremap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
+
 " Edit .vimrc file
-nmap <Leader>evv :edit $MYVIMRC<cr>
-nmap <Leader>ev :edit ~/.vimrc<cr>
+nnoremap <Leader>evv :edit $MYVIMRC<cr>
+nnoremap <Leader>ev :edit ~/.vimrc<cr>
+
 " Edit plugin.vim file
-nmap <Leader>eb :edit ~/.vim/plugins.vim<cr>
-nmap <Leader>es :edit ~/.config/nvim/coc-settings.json<cr>
+nnoremap <Leader>eb :edit ~/.vim/plugins.vim<cr>
 
 " split movement mapping
-nmap <C-k> <c-w><c-k>
-nmap <C-j> <c-w><c-j>
-nmap <C-l> <c-w><c-l>
-nmap <C-h> <c-w><c-h>
-
+nnoremap <C-k> <c-w><c-k>
+nnoremap <C-j> <c-w><c-j>
+nnoremap <C-l> <c-w><c-l>
+nnoremap <C-h> <c-w><c-h>
 
 " space open/closed folds
 nnoremap <space> za
@@ -131,9 +121,7 @@ inoremap <left> :bprevious<cr>
 inoremap <right> :bnext<cr>
 nnoremap <left> :bprevious<cr>
 nnoremap <right> :bnext<cr>
-inoremap <C-d> :bd<cr>
 nnoremap <C-d> :bd<cr>
-
 
 " Mappings for moving lines and preserving indentation
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
@@ -148,54 +136,77 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 nnoremap j gj
 nnoremap k gk
 
+" fuzzy finding map
+nnoremap <C-p> :Files<CR>
+
 " --------- Plugins Configuration -------
 " CtrlP Settings
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|\v[\/](\.(git|hg|svn|swp|ico))$'
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
+"let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|\v[\/](\.(git|hg|svn|swp|ico))$'
+"let g:ctrlp_match_window = 'bottom,order:ttb'
+"let g:ctrlp_switch_buffer = 0
+"let g:ctrlp_working_path_mode = 0
 
-" EditorConfig
-let g:EditorConfig_exclude_patterns = ['scp://.*']
+" limelight
+"autocmd! User GoyoEnter Limelight
+"autocmd! User GoyoLeave Limelight!
+
+" CloseTag
+let g:closetag_regions = {
+  \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+  \ 'javascript.jsx': 'jsxRegion',
+  \ 'typescriptreact': 'jsxRegion,tsxRegion',
+  \ 'javascriptreact': 'jsxRegion',
+  \ }
 
 " NerdTree
 map <C-B> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = 'right' " NerdTree
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " toggle commenting of lines with command + /
 nmap <C-\> :Commentary<CR>
 vmap <C-\> :Commentary<CR>
 
-" Treat mdx as md
-autocmd BufNewFile,BufRead *.mdx set syntax=markdown
+
+" EditorConfig
+"let g:EditorConfig_exclude_patterns = ['scp://.*']
+
 
 " Prettier
 " Run prettier asynchronously before saving
-let g:prettier#autoformat=0
+"let g:prettier#autoformat=0
 " Use babylon parser with prettier
-let g:prettier#config#parser="babylon"
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
-nnoremap = :Prettier<CR>
+"let g:prettier#config#parser="babylon"
+"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+"nnoremap = :Prettier<CR>
 
 
 " Use JSON in .babelrc files
-autocmd BufRead,BufNewFile .babelrc setfiletype json
+"autocmd BufRead,BufNewFile .babelrc setfiletype json
 
 " vim-ruby
-let g:ruby_indent_assignment_style = 'variable'
+"let g:ruby_indent_assignment_style = 'variable'
 
 " jsx settings
-let g:polyglot_disabled = ['jsx']
+"let g:polyglot_disabled = ['jsx']
 
 " ale linters
-let b:ale_fixers = {'javascript': ['prettier', 'eslint'], 'ruby': ['standardrb']}
-let g:ale_linters = { 'ruby': ['standardrb', 'rubocop'], 'javascript': ['eslint'] }
+let g:ale_fixers = {'javascript': ['standard'], 'ruby': ['standardrb']}
+let g:ale_linters = { 'ruby': ['standardrb'], 'javascript': ['standard'] }
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_pattern_options = {
 \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
 \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
 \}
-let g:ale_fix_on_save = 0
-let g:ale_linters_explicit = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
@@ -203,6 +214,8 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 let g:ale_set_highlights = 0
+" Airline + Ale
+let g:airline#extensions#ale#enabled = 1
 
 "Autoload .vimrc file
 augroup sourceVimrc
