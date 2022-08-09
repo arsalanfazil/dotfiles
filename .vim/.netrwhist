@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/arsalan/classes/batch-2/react-movie-website/src/components'
+let g:netrw_dirhist_4='/home/arsalan/classes/batch-2/react-movie-website/src'
+let g:netrw_dirhist_3='/home/arsalan/classes/batch-2/react-movie-website/src/components'
+let g:netrw_dirhist_2='/home/arsalan/classes/batch-2/react-movie-website/src'
+let g:netrw_dirhist_1='/home/arsalan/classes/batch-2/react-movie-website'
+let g:netrw_dirhist_0='/home/arsalan/classes/batch-2/react-movie-website/node_modules'
+let g:netrw_dirhist_9='/home/arsalan/classes/batch-2/react-movie-website'
+let g:netrw_dirhist_8='/home/arsalan/classes/batch-2/react-101/src'
+let g:netrw_dirhist_7='/home/arsalan/classes/batch-2/react-movie-website/src/components'
+let g:netrw_dirhist_6='/home/arsalan/classes/batch-2/react-movie-website/src'

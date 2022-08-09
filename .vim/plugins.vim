@@ -3,6 +3,20 @@ call plug#begin('~/.vim/bundle')
 " make vim awesome
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
+Plug 'cohama/lexima.vim'
+
+
+if has("nvim")
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzy-native.nvim'
+endif
+
+
+" call fuzzy finder he knows the secret file
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 Plug 'tpope/vim-repeat'
 Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-endwise'
@@ -14,11 +28,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
-Plug 'preservim/nerdtree'
 
-" call fuzzy finder he knows the secret file
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+
 
 " vim's sidebar
 " Plug 'scrooloose/nerdtree'
@@ -30,7 +41,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'mhinz/vim-startify'
 
 " one of the best
-Plug 'kaicataldo/material.vim'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 " always making mistakes
 Plug 'dense-analysis/ale'

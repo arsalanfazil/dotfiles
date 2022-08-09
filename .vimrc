@@ -2,11 +2,11 @@
 so ~/.vim/plugins.vim
 
 " ; The leader
-let mapleader=";"
+let mapleader=" "
 
 " ready set and go
 set nocompatible
-set colorcolumn=81
+set colorcolumn=80
 set relativenumber
 set number
 set showcmd
@@ -114,7 +114,7 @@ nnoremap <C-l> <c-w><c-l>
 nnoremap <C-h> <c-w><c-h>
 
 " space open/closed folds
-nnoremap <space> za
+nnoremap <Leader>z za
 
 " Tabs Switching
 inoremap <left> :bprevious<cr>
@@ -138,18 +138,7 @@ nnoremap k gk
 
 " fuzzy finding map
 nnoremap <C-p> :Files<CR>
-
-" --------- Plugins Configuration -------
-" CtrlP Settings
-"let g:ctrlp_working_path_mode = 'ra'
-"let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|\v[\/](\.(git|hg|svn|swp|ico))$'
-"let g:ctrlp_match_window = 'bottom,order:ttb'
-"let g:ctrlp_switch_buffer = 0
-"let g:ctrlp_working_path_mode = 0
-
-" limelight
-"autocmd! User GoyoEnter Limelight
-"autocmd! User GoyoLeave Limelight!
+nnoremap <Leader>gf :GFiles<CR>
 
 " CloseTag
 let g:closetag_regions = {
@@ -158,17 +147,6 @@ let g:closetag_regions = {
   \ 'typescriptreact': 'jsxRegion,tsxRegion',
   \ 'javascriptreact': 'jsxRegion',
   \ }
-
-" NerdTree
-map <C-B> :NERDTreeToggle<CR>
-let g:NERDTreeWinPos = 'right' " NerdTree
-" Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " toggle commenting of lines with command + /
 nmap <C-\> :Commentary<CR>
