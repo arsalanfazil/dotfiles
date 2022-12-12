@@ -4,92 +4,86 @@ call plug#begin('~/.vim/bundle')
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'cohama/lexima.vim'
-
-
-if has("nvim")
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'nvim-telescope/telescope-fzy-native.nvim'
-endif
-
-
-" call fuzzy finder he knows the secret file
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
 Plug 'tpope/vim-repeat'
 Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-endwise'
 Plug 'mattn/emmet-vim'
 Plug 'ervandew/supertab'
 Plug 'alvan/vim-closetag'
-Plug 'valloric/matchtagalways'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-commentary'
-Plug 'godlygeek/tabular'
+Plug 'tomtom/tcomment_vim'
 
-
-
-" vim's sidebar
-" Plug 'scrooloose/nerdtree'
-"
-" I need help here
+" netrw: for file exploring
 Plug 'tpope/vim-vinegar'
+Plug 'preservim/nerdtree'
+Plug 'PhilRunninger/nerdtree-visual-selection'
 
-" i need motivation
+" autocompletion plugin
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+" autocomplete snippet
+" Use release branch (recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" call fuzzy finder he knows the secret file
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" programming's quotes on startup screen
 Plug 'mhinz/vim-startify'
 
-" one of the best
+" colorscheme
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-
-" always making mistakes
-Plug 'dense-analysis/ale'
-Plug 'vim-syntastic/syntastic'
+Plug 'joshdick/onedark.vim'
 
 " fancy beer bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+
 " thats my family pack
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'tpope/vim-bundler'
-Plug 'junegunn/vim-emoji'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'plasticboy/vim-markdown'
-Plug 'cakebaker/scss-syntax.vim'
-
-" snippets
-"Plug 'tomtom/tlib_vim'
-"Plug 'marcweber/vim-addon-mw-utils'
-"Plug 'garbas/vim-snipmate'
-"Plug 'honza/vim-snippets'
-
-" .editorconfig
-"Plug 'editorconfig/editorconfig-vim'
-
-
-"Plug 'hail2u/vim-css3-syntax'
-"Plug 'elixir-editors/vim-elixir'
-"Plugin 'moll/vim-node'
-"Plug 'othree/html5.vim'
-"Plug 'StanAngeloff/php.vim'
-"Plug 'phpactor/phpactor'
-
+Plug 'sheerun/vim-polyglot'
+"Plug 'pangloss/vim-javascript'
+"Plug 'vim-ruby/vim-ruby'
 "Plug 'MaxMEllon/vim-jsx-pretty'
-"Plug 'jparise/vim-graphql'
+"Plug 'elixir-editors/vim-elixir'
 "Plug 'lifepillar/pgsql.vim'
-"Plug 'elzr/vim-json'
-"Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-rails'
+Plug 'mattreduce/vim-mix'
+Plug 'tpope/vim-dispatch' " For Dispatching Test/Rake Commands in command mode
+Plug 'tpope/vim-bundler' " Run Bundler in vim
+Plug 'preservim/vim-markdown'
+"Plug 'cakebaker/scss-syntax.vim'
+"Plug 'jparise/vim-graphql'
 "Plug 'chr4/nginx.vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'tpope/vim-fugitive' " Git in Vim
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'branch': 'release/0.x'
+  \ }
 
-" Programming Language Tools
-"Plug 'prettier/vim-prettier'
-"Plug 'sunaku/vim-ruby-minitest'
+" catching errors
+Plug 'dense-analysis/ale'
 
+
+" Vim Plugins as a writing tool
+Plug 'reedes/vim-pencil' " Super-powered writing things
+Plug 'tpope/vim-abolish' " Fancy abbreviation replacements
+Plug 'junegunn/limelight.vim' " Highlights only active paragraph
+Plug 'junegunn/goyo.vim' " Full screen writing mode
+Plug 'reedes/vim-lexical' " Better spellcheck mappings
+Plug 'reedes/vim-litecorrect' " Better autocorrections
+Plug 'reedes/vim-textobj-sentence' " Treat sentences as text objects
+Plug 'reedes/vim-wordy' " Weasel words and passive voice
+Plug 'preservim/vim-colors-pencil'
 
 
 call plug#end()
