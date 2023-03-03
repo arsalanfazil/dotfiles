@@ -28,9 +28,6 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-" autocomplete snippet
-" Use release branch (recommend)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " call fuzzy finder he knows the secret file
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -40,8 +37,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
 
 " colorscheme
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'joshdick/onedark.vim'
+
 
 " fancy beer bar
 Plug 'vim-airline/vim-airline'
@@ -60,6 +57,7 @@ Plug 'mattreduce/vim-mix'
 Plug 'tpope/vim-dispatch' " For Dispatching Test/Rake Commands in command mode
 Plug 'tpope/vim-bundler' " Run Bundler in vim
 Plug 'preservim/vim-markdown'
+Plug 'prisma/vim-prisma'
 "Plug 'cakebaker/scss-syntax.vim'
 "Plug 'jparise/vim-graphql'
 "Plug 'chr4/nginx.vim'

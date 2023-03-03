@@ -76,10 +76,6 @@ set secure " prevent dangerous command
 " Colors
 syntax enable
 
-"colorscheme material
-" let g:material_terminal_italics = 1
-" let g:material_theme_style = 'darker'
-" let g:airline_theme = 'material'
 
 " enable true color
 if (empty($TMUX))
@@ -90,6 +86,7 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
 colorscheme onedark
 set background=dark
 let g:airline_theme='onedark'
@@ -138,8 +135,8 @@ nnoremap <C-l> <c-w><c-l>
 nnoremap <C-h> <c-w><c-h>
 
 " split it
-nnoremap <Leader>\ :vsplit<CR>
-nnoremap <Leader>- :split<CR>
+nnoremap <Leader>vs :vsplit<CR>
+nnoremap <Leader>s :split<CR>
 
 " space open/closed folds
 nnoremap <Leader>z za
@@ -156,10 +153,8 @@ nnoremap j gj
 nnoremap k gk
 
 " fuzzy finding map
-nnoremap <C-p> :GFiles<CR>
-nnoremap <C-f> :Files
-" nnoremap <C-p> :Files<CR>
-" nnoremap <Leader>gf :GFiles<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <Leader>gf :GFiles<CR>
 
 " nerdtree
 nnoremap <C-b> :NERDTreeToggle<CR>
@@ -170,6 +165,7 @@ vmap <C-/> gcc
 
 " =================== Plugin Settings
 
+
 " NERDTREE Settings
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
@@ -178,10 +174,6 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=1
 
-" Coc Settings
-autocmd FileType scss setl iskeyword+=@-@
-set updatetime=300
-set shortmess+=c
 
 au FileType eruby let b:AutoPairs = AutoPairsDefine({'<%' : '%>'})
 au FileType liquid let b:AutoPairs = AutoPairsDefine({'{%' : '%}'})
@@ -213,7 +205,7 @@ let g:mta_filetypes = {
 " Prettier Config
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
-let g:prettier#autoformat_config_present = 1
+let g:prettier#autoformat_config_present = 0
 let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 0
 " autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html PrettierAsync
@@ -270,7 +262,7 @@ let g:pencil#softDetectThreshold = 130
 au FileType markdown let g:pencil_higher_contrast_ui = 0
 
 " Goyo Config
-au Filetype markdown Goyo 72
+" au Filetype markdown Goyo 72
 au BufRead,BufNewFile *.txt set filetype=markdown
 let g:vim_markdown_folding_disabled=1
 
@@ -313,7 +305,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 "Autoload .vimrc file
 augroup sourceVimrc
-	autocmd!
-	autocmd BufWritePost .vimrc source %
-	autocmd BufWritePost ~/.vim/plugins.vim source ~/.vimrc
+  autocmd!
+  autocmd BufWritePost .vimrc source %
+  autocmd BufWritePost ~/.vim/plugins.vim source ~/.vimrc
 augroup END
