@@ -37,6 +37,8 @@ return require('packer').startup(function(use)
     }
   }
 
+  use 'nvim-tree/nvim-web-devicons'
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
@@ -51,5 +53,14 @@ return require('packer').startup(function(use)
 
   use 'folke/tokyonight.nvim'
   use 'navarasu/onedark.nvim'
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+  }
+
+  use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 
 end)
