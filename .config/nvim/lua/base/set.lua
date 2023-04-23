@@ -9,48 +9,47 @@ vim.opt.title = true
 
 
 -- Tabs
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.smarttab = true
-vim.opt.smartindent = true
-vim.opt.autoindent = true
-vim.opt.shiftround = true
-vim.opt.wrap = false
-vim.opt.backspace = "start,eol,indent"
+vim.opt.tabstop      = 2
+vim.opt.softtabstop  = 2
+vim.opt.expandtab    = true
+vim.opt.shiftwidth   = 2
+vim.opt.smarttab     = true
+vim.opt.smartindent  = true
+vim.opt.autoindent   = true
+vim.opt.shiftround   = true
+vim.opt.wrap         = false
+vim.opt.backspace    = "start,eol,indent"
 
-vim.opt.colorcolumn = "80"
-vim.opt.numberwidth = 2
+vim.opt.numberwidth  = 4
 
 -- No swap!
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undofile = true
-vim.opt.backupskip = "/tm/*,private/tmp/*"
+vim.opt.swapfile     = false
+vim.opt.backup       = false
+vim.opt.undofile     = true
+vim.opt.backupskip   = "/tm/*,private/tmp/*"
 
 -- Enable break indent
-vim.opt.breakindent = true
+vim.opt.breakindent  = true
 
 -- Search/Regex
-vim.opt.gdefault  = true
-vim.opt.magic = true
-vim.opt.incsearch = true
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.opt.gdefault     = true
+vim.opt.magic        = true
+vim.opt.incsearch    = true
+vim.opt.hlsearch     = true
+vim.opt.ignorecase   = true
+vim.opt.smartcase    = true
 
 -- Split vertically default below
-vim.opt.splitbelow = true
+vim.opt.splitbelow   = true
 
 -- Split horizentally default right
-vim.opt.splitright = true
+vim.opt.splitright   = true
 
 -- showing statusbar
-vim.opt.laststatus = 2
-vim.opt.scrolloff = 10
-vim.opt.encoding= "utf-8"
-vim.opt.spelllang = "en_us"
+vim.opt.laststatus   = 2
+vim.opt.scrolloff    = 10
+vim.opt.encoding     = "utf-8"
+vim.opt.spelllang    = "en_us"
 vim.opt.fileencoding = "utf-8"
 
 

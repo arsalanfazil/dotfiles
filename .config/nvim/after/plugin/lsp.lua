@@ -1,3 +1,4 @@
+require("lsp-format").setup {}
 local lsp = require('lsp-zero').preset('recommended')
 
 -- When you don't have mason.nvim installed
@@ -31,6 +32,8 @@ lsp.on_attach(function(client, bufnr)
 
   local opts = {buffer = bufnr, remap = false}
   local bind = vim.keymap.set
+
+  require('lsp-format').on_attach(client)
 
   bind('n', 'gd', function() vim.lsp.buf.definition() end, opts)
   bind('n', 'K', function() vim.lsp.buf.hover() end, opts)
