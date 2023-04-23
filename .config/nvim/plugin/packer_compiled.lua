@@ -179,6 +179,11 @@ _G.packer_plugins = {
     path = "/home/arsalan/.local/share/nvim/site/pack/packer/start/smartcolumn.nvim",
     url = "https://github.com/m4xshen/smartcolumn.nvim"
   },
+  supertab = {
+    loaded = true,
+    path = "/home/arsalan/.local/share/nvim/site/pack/packer/start/supertab",
+    url = "https://github.com/ervandew/supertab"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/arsalan/.local/share/nvim/site/pack/packer/start/telescope.nvim",

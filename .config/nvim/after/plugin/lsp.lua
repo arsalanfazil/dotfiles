@@ -1,4 +1,3 @@
-require("lsp-format").setup {}
 local lsp = require('lsp-zero').preset('recommended')
 
 -- When you don't have mason.nvim installed
@@ -6,13 +5,13 @@ local lsp = require('lsp-zero').preset('recommended')
 
 
 lsp.ensure_installed({
-  'elixirls',
-  'emmet_ls',
-  'eslint',
-  'html',
-  'jsonls',
-  'standardrb',
-  'ruby_ls'
+	'elixirls',
+	'emmet_ls',
+	'eslint',
+	'html',
+	'jsonls',
+	'standardrb',
+	'ruby_ls'
 })
 
 local cmp = require('cmp')
@@ -29,23 +28,20 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.on_attach(function(client, bufnr)
+	local opts = { buffer = bufnr, remap = false }
+	local bind = vim.keymap.set
 
-  local opts = {buffer = bufnr, remap = false}
-  local bind = vim.keymap.set
-
-  require('lsp-format').on_attach(client)
-
-  bind('n', 'gd', function() vim.lsp.buf.definition() end, opts)
-  bind('n', 'K', function() vim.lsp.buf.hover() end, opts)
-  bind('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
-  bind('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
-  bind('n', '[d', function() vim.diagnostic.goto_next() end, opts)
-  bind('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
-  bind('n', '<leader>vca', function() vim.lsp.buf.code_action() end, opts)
-  bind('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
-  bind('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
-  bind('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
-  -- more code  ...
+	bind('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+	bind('n', 'K', function() vim.lsp.buf.hover() end, opts)
+	bind('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
+	bind('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
+	bind('n', '[d', function() vim.diagnostic.goto_next() end, opts)
+	bind('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
+	bind('n', '<leader>vca', function() vim.lsp.buf.code_action() end, opts)
+	bind('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
+	bind('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
+	bind('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+	-- more code  ...
 end)
 
 lsp.setup()

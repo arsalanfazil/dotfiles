@@ -73,4 +73,6 @@ return require('packer').startup(function(use)
 	use 'tiagovla/tokyodark.nvim'
 	use "olimorris/onedarkpro.nvim"
 	use "m4xshen/smartcolumn.nvim"
+	use "ervandew/supertab"
+
 end)
