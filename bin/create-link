@@ -7,4 +7,6 @@ ln -s ~/.dotfiles/.gitignore_global ~/
 ln -s ~/.dotfiles/.gemrc ~/
 ln -s ~/.dotfiles/.config/nvim ~/.config/nvim
 ln -s ~/.dotfiles/.bash_aliases ~/
+ln -s ~/.dotfiles/.gvimrc ~/
+ln -s ~/.dotfiles/efm-langserver ~/.config/
 

@@ -1,6 +1,5 @@
 " Plug
 so ~/.vim/plugins.vim
-let g:deoplete#enable_at_startup = 1
 
 " ; The leader
 let mapleader=";"
@@ -76,7 +75,6 @@ set secure " prevent dangerous command
 " Colors
 syntax enable
 
-
 " enable true color
 if (empty($TMUX))
   if (has("nvim"))
@@ -87,20 +85,13 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme onedark
 set background=dark
-let g:airline_theme='onedark'
+let g:one_allow_italics = 1
+colorscheme one
+let g:airline_theme='one'
 
 let ruby_space_errors = 1
 let c_space_errors = 1
-
-
-
-" au BufNewFile,BufRead *php set filetype=html
-" au BufNewFile,BufRead *ejs set filetype=html
-" au BufNewFile,BufRead *html.erb set filetype=html
-" au BufNewFile,BufRead *blade.php set filetype=html
-" au BufNewFile,BufRead *js.erb set filetype=javascript
 
 
 "==================  Mapping
@@ -153,8 +144,8 @@ nnoremap j gj
 nnoremap k gk
 
 " fuzzy finding map
-nnoremap <C-p> :Files<CR>
-nnoremap <Leader>gf :GFiles<CR>
+nnoremap <Leader>pf :Files<CR>
+nnoremap <C-p> :GFiles<CR>
 
 " nerdtree
 nnoremap <C-b> :NERDTreeToggle<CR>
@@ -167,10 +158,6 @@ vmap <C-/> gcc
 
 
 " NERDTREE Settings
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=1
 
@@ -202,18 +189,16 @@ let g:mta_filetypes = {
     \ 'erb' : 1,
     \}
 
-" Prettier Config
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-let g:prettier#autoformat_config_present = 0
-let g:prettier#exec_cmd_async = 1
-let g:prettier#quickfix_enabled = 0
-" autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 
 " ale linters
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
 let g:ruby_indent_assignment_style = 'variable'
-let g:ale_fixers = {'javascript': ['standard'], 'ruby': ['standardrb']}
-let g:ale_linters = { 'ruby': ['standardrb'], 'javascript': ['standard'] }
+let b:ale_linter_aliases = {'jsx': ['javascript']}
+let g:ale_fixers = {'javascript': ['prettier', 'standard'], 'ruby': ['standardrb'] }
+let g:ale_linters = { 'ruby': ['standardrb'], 'javascript': ['standard'], 'jsx': ['standard']}
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
@@ -231,77 +216,54 @@ let g:ale_set_highlights = 0
 " Airline + Ale
 let g:airline#extensions#ale#enabled = 1
 
-" ========================== Vim Configuration for writing/editing in markdown files
 
-" enable spell checking on markdown
-autocmd BufRead,BufNewFile *.md setlocal spell
 
-au FileType markdown set mouse=a
-au FileType markdown colorscheme pencil
-au FileType markdown set background=light
+" Coc Extension Settings
 
-augroup pencil
-   autocmd!
-   autocmd filetype markdown,mkd call pencil#init()
-       \ | call lexical#init()
-       \ | call litecorrect#init()
-       \ | setl spell spl=en_us fdl=4 noru nonu nornu
-       \ | setl fdo+=search
- augroup END
+" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+" delays and poor user experience
+set updatetime=300
 
-" Vim-Pencil Config
-let g:pencil#wrapModeDefault = 'soft'
-let g:pencil#textwidth = 74
-let g:pencil#joinspaces = 0
-let g:pencil#cursorwrap = 1
-let g:pencil#conceallevel = 3
-let g:pencil#concealcursor = 'c'
-let g:pencil#softDetectSample = 20
-let g:pencil#softDetectThreshold = 130
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved
+set signcolumn=yes
 
-au FileType markdown let g:pencil_higher_contrast_ui = 0
+inoremap <silent><expr> <cr> coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "\<C-g>u\<CR>"
 
-" Goyo Config
-" au Filetype markdown Goyo 72
-au BufRead,BufNewFile *.txt set filetype=markdown
-let g:vim_markdown_folding_disabled=1
-
-map <F9> :Goyo<CR>
-
-" set thesaurus+=/home/dino/.vim/thesaurus.txt
-
-" vim-lexical
-let g:lexical#spell_key = '<leader>s'
-let g:lexical#spelllang = ['en_us']
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
-" wordy config
-noremap <silent> <F8> :<C-u>NextWordy<cr>
-xnoremap <silent> <F8> :<C-u>NextWordy<cr>
-inoremap <silent> <F8> <C-o>:NextWordy<cr>
-let g:wordy_spell_dir = '/home/arsalan/.wordy'
-
-function! s:goyo_enter()
-  set linebreak
-  set spell spelllang=en_us
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  set title
-  call deoplete#disable()
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-function! s:goyo_leave()
-  set nolinebreak
-  set nospell
-  set showmode
-  set showcmd
-  set notitle
-  call deoplete#enable()
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
 endfunction
 
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+
 
 "Autoload .vimrc file
 augroup sourceVimrc
