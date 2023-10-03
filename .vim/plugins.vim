@@ -23,9 +23,32 @@ Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
+" Coc Extensions
+Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'}
+Plug 'yaegassy/coc-astro', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'josa42/coc-docker', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'elixir-lsp/coc-elixir', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-emmet', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-eslint', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-html', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'yaegassy/coc-html-css-support', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'yaegassy/coc-nginx', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'josa42/coc-sh', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-snippets', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-solargraph', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-tabnine', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
+
+
+
+
 " call fuzzy finder he knows the secret file
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf.vim'
+Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/remote', 'do': ':UpdateRemotePlugins' }
 
 " programming's quotes on startup screen
 Plug 'mhinz/vim-startify'

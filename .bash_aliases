@@ -13,9 +13,9 @@ alias gco="git checkout"
 
 
 # sdocker aliases
-alias su-docker="sudo docker"
+alias doc="docker"
 
-alias docked='su-docker run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle -p 3000:3000 ghcr.io/rails/cli'
+alias docked='doc run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle -p 3000:3000 ghcr.io/rails/cli'
 alias rails='docked rails'
 alias rails-dev='docked bin/dev'
 alias rails-bundle='docked bundle'
@@ -24,10 +24,10 @@ alias rails-rake='docked rake'
 alias rails-gem='docked gem'
 
 
-alias rails-compose='su-docker compose'
-alias rails-compose-build='su-docker compose build'
-alias rails-compose-dev='su-docker compose up'
-alias rails-compose-run='su-docker compose run --rm web bin/rails'
-alias rails-compose-exec='su-docker compose exec web bin/rails'
-alias rails-compose-bundle='su-docker compose run --rm web bundle'
-alias rails-compose-yarn='su-docker compose run --rm web yarn'
+alias rails-compose='doc compose'
+alias rails-compose-build='doc compose build'
+alias rails-compose-dev='doc compose up'
+alias rails-compose-run='doc compose run --rm web bin/rails'
+alias rails-compose-exec='doc compose exec web bin/rails'
+alias rails-compose-bundle='doc compose run --rm web bundle'
+alias rails-compose-yarn='doc compose run --rm web yarn'

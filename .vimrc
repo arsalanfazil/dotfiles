@@ -76,14 +76,6 @@ set secure " prevent dangerous command
 syntax enable
 
 " enable true color
-if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
 
 set background=dark
 let g:one_allow_italics = 1
@@ -144,15 +136,18 @@ nnoremap j gj
 nnoremap k gk
 
 " fuzzy finding map
-nnoremap <Leader>pf :Files<CR>
-nnoremap <C-p> :GFiles<CR>
+" nnoremap <Leader>pf :Files<CR>
+" nnoremap <C-p> :GFiles<CR>
+
+
 
 " nerdtree
 nnoremap <C-b> :NERDTreeToggle<CR>
 
 " toggle commenting of lines with command + /
-nmap <C-/> gcc
-vmap <C-/> gcc
+nmap <C-\> gcc
+vmap <C-\> gcc
+
 
 " =================== Plugin Settings
 
@@ -163,7 +158,9 @@ let NERDTreeShowHidden=1
 
 
 au FileType eruby let b:AutoPairs = AutoPairsDefine({'<%' : '%>'})
+au FileType eelixir let b:AutoPairs = AutoPairsDefine({'<%' : '%>'})
 au FileType liquid let b:AutoPairs = AutoPairsDefine({'{%' : '%}'})
+autocmd FileType scss setl iskeyword+=@-@
 
 " CloseTag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.html.erb,*.jsx,*js'
@@ -228,7 +225,8 @@ set updatetime=300
 " diagnostics appear/become resolved
 set signcolumn=yes
 
-inoremap <silent><expr> <cr> coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 " use <tab> to trigger completion and navigate to the next complete item
 function! CheckBackspace() abort
@@ -240,6 +238,9 @@ inoremap <silent><expr> <Tab>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
+
+noremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
@@ -262,7 +263,6 @@ endfunction
 " Formatting selected code
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-
 
 
 "Autoload .vimrc file
