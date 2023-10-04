@@ -73,5 +73,3 @@ languages:
     lint-command: 'yamllint -f parsable -'
     lint-stdin: true
 
-  =:
-    - <<: *any-excitetranslate

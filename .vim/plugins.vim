@@ -24,6 +24,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 " Coc Extensions
+" Install efm language server first: https://github.com/mattn/efm-langserver
 Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'}
 Plug 'yaegassy/coc-astro', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css', { 'do': 'yarn install --frozen-lockfile' }
@@ -47,8 +48,8 @@ Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
 
 " call fuzzy finder he knows the secret file
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
-Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/remote', 'do': ':UpdateRemotePlugins' }
+Plug 'junegunn/fzf.vim'
+" Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/remote', 'do': ':UpdateRemotePlugins' }
 
 " programming's quotes on startup screen
 Plug 'mhinz/vim-startify'
@@ -56,6 +57,8 @@ Plug 'mhinz/vim-startify'
 " colorscheme
 Plug 'joshdick/onedark.vim'
 Plug 'rakr/vim-one'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+
 
 " fancy beer bar
 Plug 'vim-airline/vim-airline'

@@ -78,8 +78,9 @@ syntax enable
 " enable true color
 
 set background=dark
-let g:one_allow_italics = 1
-colorscheme one
+colorscheme material
+let g:material_theme_style = 'darker' 
+let g:material_terminal_italics = 1
 let g:airline_theme='one'
 
 let ruby_space_errors = 1
@@ -136,9 +137,8 @@ nnoremap j gj
 nnoremap k gk
 
 " fuzzy finding map
-" nnoremap <Leader>pf :Files<CR>
-" nnoremap <C-p> :GFiles<CR>
-
+nnoremap <Leader>pf :Files<CR>
+nnoremap <C-p> :GFiles<CR>
 
 
 " nerdtree
