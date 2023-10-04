@@ -68,4 +68,3 @@ keymap.set("n", "<leader>f", function()
   vim.lsp.buf.format({async = false, timeout_ms = 10000})
 end)
 
-keymap.set("n", "<C-b>", ":NvimTreeToggle<CR>")

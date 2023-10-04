@@ -74,14 +74,14 @@ return {
     end,
   },
 
-  {
-    "m4xshen/smartcolumn.nvim"
-    config = function()
-      require("nvim-tree").setup {
-	custom_colorcolumn = { ruby = "120" }
-      }
-      end,
-  },
+  -- {
+  --   "m4xshen/smartcolumn.nvim"
+  --   config = function()
+  --     require("nvim-tree").setup {
+	-- custom_colorcolumn = { ruby = "120" }
+  --     },
+  --     end,
+  -- },
 
   
   -- {'nvim-tree/nvim-web-devicons'},
