@@ -78,8 +78,6 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 
 vim.opt.formatoptions:append { "r" }
 
-
-
 -- highlight options
 vim.opt.cursorline = true
 vim.opt.termguicolors = true

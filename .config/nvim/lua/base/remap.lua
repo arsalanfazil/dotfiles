@@ -22,7 +22,6 @@ keymap.set("n", "-", "<C-x>")
 -- all select
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
-
 -- paste only cut, not delete
 keymap.set("x", "<leader>p", "\"_dP")
 
