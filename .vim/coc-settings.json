@@ -6,8 +6,12 @@
       "args": ["start"],
       "filetypes": ["sh"]
     },
+    // "elixir": {
+    //   "pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
+    //   "filetypes": ["elixir", "eelixir"]
+    // },
     "elixirLS": {
-      "command": "~/.config/coc/extensions/node_modules/coc-elixir/els-release/language_server.sh",
+      "command": "~/.elixir-ls/release/language_server.sh",
       "filetypes": ["elixir", "eelixir"]
     },
     "erlang": {

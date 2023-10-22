@@ -18,7 +18,38 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate'
+    build = ':TSUpdate',
+    config = function()
+      require("lazy").setup({{
+	  "nvim-treesitter/nvim-treesitter",
+	  build = ":TSUpdate",
+	  config = function ()
+	    local configs = require("nvim-treesitter.configs")
+	    configs.setup({
+	      ensure_installed = {
+		  "javascript",
+		  'elixir',
+		  "ruby",
+		  "c",
+		  "lua",
+		  "vim",
+		  "vimdoc",
+		  "yaml",
+		  "sql",
+		  "scss",
+		  "html",
+		  "dockerfile",
+		  "css",
+		  "json",
+		  "bash"
+		},
+		sync_install = false,
+		highlight = { enable = true },
+		indent = { enable = true },
+	      })
+	  end
+      }})
+    end,
   },
 
   {'williamboman/mason.nvim'},
@@ -29,6 +60,35 @@ return {
   {'hrsh7th/nvim-cmp'},
   {'L3MON4D3/LuaSnip'},
 
+{
+  "elixir-tools/elixir-tools.nvim",
+  version = "*",
+  event = { "BufReadPre", "BufNewFile" },
+  config = function()
+    local elixir = require("elixir")
+    local elixirls = require("elixir.elixirls")
+
+    elixir.setup {
+      nextls = {enable = true},
+      credo = {},
+      elixirls = {
+        enable = true,
+        settings = elixirls.settings {
+          dialyzerEnabled = false,
+          enableTestLenses = false,
+        },
+        on_attach = function(client, bufnr)
+          vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", { buffer = true, noremap = true })
+          vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", { buffer = true, noremap = true })
+          vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true })
+        end,
+      }
+    }
+  end,
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
+},
 
   {
     'numToStr/Comment.nvim',
@@ -49,29 +109,43 @@ return {
   },
 
   {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
+    "rose-pine/neovim",
+    name = 'rose-pine',
+  },
+
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   version = "*",
+  --   lazy = false,
+  --   config = function()
+  --     require("nvim-tree").setup {
+	-- view = {
+	--   side = "right"
+	-- },
+	-- sort_by = "case_sensitive",
+	-- view = {
+	--   width = 30,
+	-- },
+	-- renderer = {
+	--   group_empty = true,
+	-- },
+	-- filters = {
+	--   dotfiles = true,
+	-- },
+  --     }
+  --   end,
+  -- },
+  {
+    "marko-cerovac/material.nvim",
     lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup {
-	view = {
-	  side = "right"
-	},
-	sort_by = "case_sensitive",
-	view = {
-	  width = 30,
-	},
-	renderer = {
-	  group_empty = true,
-	},
-	filters = {
-	  dotfiles = true,
-	},
-      }
-    end,
+    priority = 1000,
+    opts = {},
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
   },
 
   -- {
@@ -86,9 +160,6 @@ return {
   
   -- {'nvim-tree/nvim-web-devicons'},
 
-  {'folke/tokyonight.nvim'},
-  {'tiagovla/tokyodark.nvim'},
-  {"olimorris/onedarkpro.nvim"},
   -- {	  "ervandew/supertab"},
 
 	--   {

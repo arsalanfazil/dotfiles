@@ -16,8 +16,8 @@ keymap.set("n", "J", "mzJ`z")
 keymap.set("n", "x", "\"_x")
 
 -- inc/dec
-keymap.set("n", "+", "<C-a>")
-keymap.set("n", "-", "<C-x>")
+-- keymap.set("n", "+", "<C-a>")
+-- keymap.set("n", "-", "<C-x>")
 
 -- all select
 keymap.set("n", "<C-a>", "gg<S-v>G")

@@ -81,3 +81,4 @@ vim.opt.formatoptions:append { "r" }
 -- highlight options
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
+
