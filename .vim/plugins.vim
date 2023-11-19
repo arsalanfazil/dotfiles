@@ -57,7 +57,6 @@ Plug 'ekalinin/Dockerfile.vim'
 " catching errors
 Plug 'dense-analysis/ale'
 
-Plug 'SirVer/ultisnips'
 
 
 call plug#end()

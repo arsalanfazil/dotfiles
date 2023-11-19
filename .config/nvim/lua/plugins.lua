@@ -41,7 +41,9 @@ return {
 		  "dockerfile",
 		  "css",
 		  "json",
-		  "bash"
+		  "bash",
+      "heex",
+      "eex"
 		},
 		sync_install = false,
 		highlight = { enable = true },
@@ -98,43 +100,21 @@ return {
     lazy = false,
   },
 
-  {'romgrk/barbar.nvim',
-    dependencies = {
-      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-    },
-    init = function() vim.g.barbar_auto_setup = false end,
-    opts = {},
-    version = '^1.0.0', -- optional: only update when a new 1.x version is released
-  },
+  -- {'romgrk/barbar.nvim',
+  --   dependencies = {
+  --     'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+  --     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+  --   },
+  --   init = function() vim.g.barbar_auto_setup = false end,
+  --   opts = {},
+  --   version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  -- },
 
   {
     "rose-pine/neovim",
     name = 'rose-pine',
   },
 
-  -- {
-  --   "nvim-tree/nvim-tree.lua",
-  --   version = "*",
-  --   lazy = false,
-  --   config = function()
-  --     require("nvim-tree").setup {
-	-- view = {
-	--   side = "right"
-	-- },
-	-- sort_by = "case_sensitive",
-	-- view = {
-	--   width = 30,
-	-- },
-	-- renderer = {
-	--   group_empty = true,
-	-- },
-	-- filters = {
-	--   dotfiles = true,
-	-- },
-  --     }
-  --   end,
-  -- },
   {
     "marko-cerovac/material.nvim",
     lazy = false,

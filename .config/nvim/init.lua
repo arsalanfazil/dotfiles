@@ -16,7 +16,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 
-vim.cmd("colorscheme rose-pine")
+--Lua:
+vim.g.material_style = "deep ocean"
+vim.cmd("colorscheme material")
 
 -- disable netrw at the very start of your init.lua (strongly advised)
 -- vim.g.loaded_netrw = 1

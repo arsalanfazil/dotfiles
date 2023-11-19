@@ -4,7 +4,6 @@ local keymap = vim.keymap
 
 keymap.set("n", "<leader>pv", function() vim.cmd("Ex") end)
 
-
 -- move commands
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-1<CR>gv=gv")
