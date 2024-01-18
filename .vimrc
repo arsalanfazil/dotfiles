@@ -195,7 +195,7 @@ augroup END
 
 let g:ruby_indent_assignment_style = 'variable'
 let b:ale_linter_aliases = {'jsx': ['javascript']}
-let g:ale_fixers = {'javascript': ['prettier', 'standard'], 'ruby': ['standardrb'] }
+let g:ale_fixers = {'javascript': ['prettier', 'standard'], 'ruby': ['standardrb'], 'elixir': ['mix_format'] }
 let g:ale_linters = { 'ruby': ['standardrb'], 'javascript': ['standard'], 'jsx': ['standard']}
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1

@@ -53,6 +53,7 @@ Plug 'tpope/vim-dispatch' " For Dispatching Test/Rake Commands in command mode
 Plug 'tpope/vim-bundler' " Run Bundler in vim
 Plug 'preservim/vim-markdown'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'elixir-editors/vim-elixir'
 
 " catching errors
 Plug 'dense-analysis/ale'
