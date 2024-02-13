@@ -58,6 +58,4 @@ Plug 'elixir-editors/vim-elixir'
 " catching errors
 Plug 'dense-analysis/ale'
 
-
-
 call plug#end()

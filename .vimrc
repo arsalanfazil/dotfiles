@@ -160,6 +160,12 @@ let NERDTreeShowHidden=1
 au FileType eruby let b:AutoPairs = AutoPairsDefine({'<%' : '%>'})
 au FileType eelixir let b:AutoPairs = AutoPairsDefine({'<%' : '%>'})
 au FileType liquid let b:AutoPairs = AutoPairsDefine({'{%' : '%}'})
+au FileType yaml if bufname("%") =~# "docker-compose.yml" | set ft=yaml.docker-compose | endif
+au FileType yaml if bufname("%") =~# "compose.yml" | set ft=yaml.docker-compose | endif
+
+let g:coc_filetype_map = {
+  \ 'yaml.docker-compose': 'dockercompose',
+  \ }
 autocmd FileType scss setl iskeyword+=@-@
 
 " CloseTag
@@ -228,7 +234,6 @@ set signcolumn=yes
 
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-
 " use <tab> to trigger completion and navigate to the next complete item
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -242,6 +247,11 @@ inoremap <silent><expr> <Tab>
 
 noremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)

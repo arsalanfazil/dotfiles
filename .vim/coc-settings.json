@@ -3,26 +3,89 @@
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"]
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ]
     },
-    // "elixir": {
-    //   "pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
-    //   "filetypes": ["elixir", "eelixir"]
-    // },
     "elixirLS": {
       "command": "~/.elixir-ls/release/language_server.sh",
-      "filetypes": ["elixir", "eelixir"]
+      "filetypes": [
+        "elixir",
+        "eelixir"
+      ]
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": [
+        "dockerfile"
+      ],
+      "args": [
+        "--stdio"
+      ]
+    },
+    "dockercompose": {
+      "command": "docker-compose-langserver",
+      "args": [
+        "--stdio"
+      ],
+      "filetypes": [
+        "dockercompose"
+      ],
+      "rootPatterns": [
+        ".git",
+        ".env",
+        "docker-compose.yml",
+        "compose.yml"
+      ]
     },
     "erlang": {
       "command": "erlang_ls",
-      "filetypes": ["erlang"]
+      "filetypes": [
+        "erlang"
+      ]
     },
-    "diagnostic.displayByAle": true,
+    "ruby-lsp": {
+      "command": "ruby-lsp",
+      "initializationOptions": {
+        "experimentalFeaturesEnabled": false,
+        "enabledFeatures": [
+          "codeActions",
+          "diagnostics",
+          "documentHighlights",
+          "documentLink",
+          "documentSymbols",
+          "foldingRanges",
+          "formatting",
+          "hover",
+          "inlayHint",
+          "onTypeFormatting",
+          "selectionRanges",
+          "semanticHighlighting",
+          "completion"
+        ],
+        "formatter": "auto"
+      },
+      "filetypes": [
+        "ruby"
+      ]
+    },
     "efm": {
       "command": "efm-langserver",
       "args": [],
-      "filetypes": ["vim", "eruby", "markdown", "yaml", "javascript", "css", "dockerfile", "elixir", "html"]
+      "filetypes": [
+        "vim",
+        "eruby",
+        "markdown",
+        "yaml",
+        "javascript",
+        "css",
+        "dockerfile",
+        "elixir",
+        "html"
+      ]
     }
   }
 }
