@@ -17,6 +17,15 @@
         "eelixir"
       ]
     },
+    "html-css-support.enabledLanguages": {
+      "filetypes": [
+        "html",
+        "typescriptreact",
+        "javascriptreact",
+        "eruby",
+        "eelixir"
+      ]
+    },
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": [

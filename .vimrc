@@ -78,10 +78,10 @@ syntax enable
 " enable true color
 
 set background=dark
-colorscheme material
-let g:material_theme_style = 'darker' 
 let g:material_terminal_italics = 1
-let g:airline_theme='one'
+let g:material_theme_style = 'palenight' 
+colorscheme material
+let g:airline_theme = 'material'
 
 let ruby_space_errors = 1
 let c_space_errors = 1
