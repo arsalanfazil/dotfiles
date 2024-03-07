@@ -1,8 +1,8 @@
 return {
-	"neovim/nvim-lspconfig",
-	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
+  dependencies = {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
@@ -12,34 +12,34 @@ return {
     'saadparwaiz1/cmp_luasnip',
     "j-hui/fidget.nvim",
     "rafamadriz/friendly-snippets"
-	},
-	config = function()
+  },
+  config = function()
     require("fidget").setup()
-		require("mason").setup()
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"astro",
-				"cssls",
-				"dockerls",
-				"docker_compose_language_service",
-				"eslint",
-				"elixirls",
-				"emmet_ls",
-				"elp",
-				"html",
-				"jsonls",
-				"tsserver",
-				"lua_ls",
-				"ruby_ls",
-				"standardrb",
-				"stimulus_ls",
-				"tailwindcss",
-				"yamlls"
-			},
+    require("mason").setup()
+    require("mason-lspconfig").setup({
+      ensure_installed = {
+        "astro",
+        "cssls",
+        "dockerls",
+        "docker_compose_language_service",
+        "eslint",
+        "elixirls",
+        "emmet_ls",
+        "elp",
+        "html",
+        "jsonls",
+        "tsserver",
+        "lua_ls",
+        "ruby_ls",
+        "standardrb",
+        "stimulus_ls",
+        "tailwindcss",
+        "yamlls"
+      },
       handlers = {
-        function (server_name)
+        function(server_name)
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
-          require("lspconfig")[server_name].setup{
+          require("lspconfig")[server_name].setup {
             capabilities = capabilities
           }
         end,
@@ -62,7 +62,49 @@ return {
           })
         end,
 
-        ["lua_ls"] = function ()
+        ["ruby_ls"] = function()
+          local lspconfig = require("lspconfig")
+          local util = require("lspconfig.util")
+          local enabled_features = {
+            "codeActions",
+            -- "diagnostics",
+            "documentHighlights",
+            "documentLink",
+            "documentSymbols",
+            "foldingRanges",
+            "formatting",
+            "hover",
+            "inlayHint",
+            "onTypeFormatting",
+            "selectionRanges",
+            "semanticHighlighting",
+            "completion",
+          }
+          lspconfig.ruby_ls.setup {
+            default_config = {
+              cmd = { "bundle", "exec", "ruby-lsp" },
+              filetypes = { "ruby" },
+              root_dir = util.root_pattern("Gemfile", ".git"),
+              init_options = {
+                enabledFeatures = enabled_features,
+              },
+              settings = {},
+            },
+            -- commands = {
+            --   FormatRuby = {
+            --     function()
+            --       vim.lsp.buf.format({
+            --         name = "ruby_lsp",
+            --         async = true,
+            --       })
+            --     end,
+            --     description = "Format using ruby-lsp",
+            --   },
+            -- },
+          }
+        end,
+
+        ["lua_ls"] = function()
           local lspconfig = require("lspconfig")
           lspconfig.lua_ls.setup {
             settings = {
@@ -75,11 +117,11 @@ return {
           }
         end,
       },
-		})
+    })
 
     local cmp = require('cmp')
     require("luasnip.loaders.from_vscode").lazy_load()
-    local cmp_select = {behavior = cmp.SelectBehavior.Select}
+    local cmp_select = { behavior = cmp.SelectBehavior.Select }
     cmp.setup({
       snippet = {
         expand = function(args)
@@ -98,8 +140,8 @@ return {
         { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
       }, {
-          { name = 'buffer' },
-        })
+        { name = 'buffer' },
+      })
     })
-	end
+  end
 }
