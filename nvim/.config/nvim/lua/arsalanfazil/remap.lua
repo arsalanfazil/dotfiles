@@ -21,9 +21,7 @@ vim.keymap.set("n", "<C-h>", '<c-w><c-h>')
 vim.keymap.set("n", "<leader>vs", vim.cmd.vsplit)
 vim.keymap.set("n", "<leader>s", vim.cmd.split)
 
--- Tabs Switching
-vim.keymap.set("i", "<left>", vim.cmd.bprevious)
-vim.keymap.set("i", "<right>", vim.cmd.bnext)
+-- Buffers Switching
 vim.keymap.set("n", "<left>", vim.cmd.bprevious)
 vim.keymap.set("n", "<right>", vim.cmd.bnext)
 
