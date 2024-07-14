@@ -30,7 +30,7 @@ return {
         "jsonls",
         "tsserver",
         "lua_ls",
-        "ruby_ls",
+        "ruby_lsp",
         "standardrb",
         "stimulus_ls",
         "tailwindcss",
@@ -62,7 +62,7 @@ return {
           })
         end,
 
-        ["ruby_ls"] = function()
+        ["ruby_lsp"] = function()
           local lspconfig = require("lspconfig")
           local util = require("lspconfig.util")
           local enabled_features = {
@@ -80,7 +80,7 @@ return {
             "semanticHighlighting",
             "completion",
           }
-          lspconfig.ruby_ls.setup {
+          lspconfig.ruby_lsp.setup {
             default_config = {
               cmd = { "bundle", "exec", "ruby-lsp" },
               filetypes = { "ruby" },

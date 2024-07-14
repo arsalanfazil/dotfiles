@@ -11,7 +11,7 @@ return {
         },
         term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
       })
-      -- vim.cmd.colorscheme "catppuccin-latte"
+      vim.cmd.colorscheme "catppuccin-mocha"
     end
   },
   {
@@ -20,7 +20,7 @@ return {
     config = function()
       require("rose-pine").setup()
       -- vim.cmd("colorscheme rose-pine-dawn")
-      vim.cmd("colorscheme rose-pine-moon")
+      -- vim.cmd("colorscheme rose-pine-moon")
     end
   }
 }
