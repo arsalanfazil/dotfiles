@@ -16,7 +16,7 @@ alias gco="git checkout"
 alias doc="docker"
 
 alias docked='doc run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle -p 3000:3000 ghcr.io/rails/cli'
-alias rails='docked rails'
+alias docked-rails='docked rails'
 alias rails-dev='docked bin/dev'
 alias rails-bundle='docked bundle'
 alias rails-yarn='docked yarn'

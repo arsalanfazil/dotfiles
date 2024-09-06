@@ -28,7 +28,6 @@ vim.keymap.set("n", "<right>", vim.cmd.bnext)
 vim.keymap.set("n", "<C-w>", vim.cmd.bd)
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")

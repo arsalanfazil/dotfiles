@@ -1,14 +1,9 @@
-return {
-	{ 'nvim-lua/plenary.nvim', name = "plenary" },
-	'mbbill/undotree',
-	{
+return
+{
   "folke/zen-mode.nvim",
   opts = {
-    -- your configuration comes here
     -- or leave it empty to use the default settings
+    -- your configuration comes here
     -- refer to the configuration section below
   }
-},
-
-
 }

@@ -24,5 +24,5 @@ opacity = 0.98
 
 [keyboard]
 bindings = [
-{ key = "F11", action = "ToggleFullscreen" }
+  { key = "F11", action = "ToggleFullscreen" }
 ]
