@@ -4,10 +4,21 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- reselect indenting
+vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('v', '>', '>gv')
+
+-- register paste
+vim.keymap.set('v', 'p', '"_dP')
+
+-- for php, insert semi-colon at end of line.
+vim.keymap.set('i', ';;', '<Esc>A;')
+vim.keymap.set('i', ',,', '<Esc>A,')
+
 -- copy/paste mapping
-vim.keymap.set("v", "<C-c>", '"+y')
-vim.keymap.set("v", "<C-x>", '"+x')
-vim.keymap.set("i", "<C-v>", ':set paste<CR>"*p:set nopaste<CR>')
+-- vim.keymap.set("v", "<C-c>", '"+y')
+-- vim.keymap.set("v", "<C-x>", '"+x')
+-- vim.keymap.set("i", "<C-v>", ':set paste<CR>"*p:set nopaste<CR>')
 
 vim.keymap.set("n", "<leader><space>", vim.cmd.nohlsearch)
 
@@ -32,7 +43,6 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
-
 
 vim.keymap.set("n", "<C-b>", ":Neotree toggle reveal right<CR>")
 vim.keymap.set("n", "<C-r>", ":Neotree toggle buffers right<CR>")

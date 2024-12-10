@@ -32,3 +32,5 @@ alias rails-compose-exec='doc compose exec web bin/rails'
 alias rails-compose-bundle='doc compose run --rm web bundle'
 alias rails-compose-yarn='doc compose run --rm web yarn'
 alias rails-compose-bin='doc compose exec web'
+
+alias vim='nvim'

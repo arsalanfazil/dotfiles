@@ -13,7 +13,7 @@ return {
 		},
 		handlers = {
 			function(server_name)
-        print("setting up", server_name)
+				print("setting up", server_name)
 				require("lspconfig")[server_name].setup({})
 			end,
 		},
@@ -25,16 +25,48 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			lspconfig.emmet_language_server.setup({
+        filetypes = { "css", "heex", "elixir", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", 'php' },
 				capabilities = capabilities,
+			})
+
+			lspconfig.ruby_lsp.setup({
+				capabilities = capabilities,
+				init_options = {
+					formatter = "standard",
+					linters = { "standard" },
+				},
 			})
 
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
+
+      lspconfig.elixirls.setup({
+        -- Unix
+        cmd = { "/home/arsalan/elixir-ls/language_server.sh" };
+      })
+
+			lspconfig.phpactor.setup({
+				capabilities = capabilities,
+			})
+
 			lspconfig.html.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.tsserver.setup({
+
+			lspconfig.dockerls.setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig.ts_ls.setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig.cssls.setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,
 			})
 		end,

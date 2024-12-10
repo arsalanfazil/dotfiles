@@ -45,3 +45,8 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+
+vim.opt.mouse = 'a'
+vim.opt.clipboard = 'unnamedplus' -- use system clipboard
+vim.opt.confirm = true
+vim.opt.undofile = true

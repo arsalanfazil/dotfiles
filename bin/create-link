@@ -10,5 +10,6 @@ ln -s ~/.dotfiles/efm-langserver ~/.config/
 ln -s ~/.dotfiles/configs/.config/nvim ~/.config/
 ln -s ~/.dotfiles/configs/.config/alacritty ~/.config/
 ln -s ~/.dotfiles/configs/.config/zellij ~/.config/
+ln -s ~/.dotfiles/configs/.config/kitty ~/.config/
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
