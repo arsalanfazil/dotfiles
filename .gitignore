@@ -1,9 +1,0 @@
-# Vim Files
-*.swp
-*.swo
-*.swn
-*.swm
-
-.vim/bundle
-.vim/sessions/
-.vim/.netrwhist

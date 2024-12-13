@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+sudo apt install zsh
+chsh -s $(which zsh)
+
+echo "Your shell is now: $SHELL"
+
+echo "Installing Oh my zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

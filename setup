@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+sudo apt -y update && sudo apt -y upgrade
+
+# required pkgs
+sudo apt -y install curl git wget unzip cmake gettext lua5.1 liblua5.1-0-dev python3-pip xclip ripgrep btop fd-find tldr
+
+
+# dirs
+root_dir="$(dirname "${BASH_SOURCE[0]}")"
+installs=`find $root_dir/installs -mindepth 1 -maxdepth 1 -executable`
+configs_dir="$root_dir/configs"
+configs=`find $root_dir/configs -mindepth 1 -maxdepth 1 -type d`
+
+log() {
+    echo "$1"
+}
+
+# Install apps
+for script in $installs; do
+   if [ ! -d "$script" ]; then
+      log "executing script: $script"
+      $script
+   fi
+done
+
+
+# copy configs
+for c in $configs; do
+    "copying: $c"
+    cp -r $c $HOME/.config/
+done
+
+copy() {
+    log "removing $2"
+    rm $2
+
+    log "copying: $1"
+    cp $1 $2
+}
+
+copy "$configs_dir/.zsh_profile" ~/.zsh_profile
+copy "$configs_dir/.zshrc" ~/.zshrc
+copy "$configs_dir/.gitconfig" ~/.gitconfig
+copy "$configs_dir/.gitignore_global" ~/.gitignore_global
+

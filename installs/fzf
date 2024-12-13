@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/fzf
+$HOME/fzf/install
+
+if command -v fzf >/dev/null 2>&1; then
+    echo "removing fzf clone folder"
+    sudo rm -r $HOME/fzf
+fi
