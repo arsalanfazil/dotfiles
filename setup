@@ -1,35 +1,44 @@
 #!/usr/bin/env bash
 
-sudo apt -y update && sudo apt -y upgrade
-
-# required pkgs
-sudo apt -y install curl git wget unzip cmake gettext lua5.1 liblua5.1-0-dev python3-pip xclip ripgrep btop fd-find tldr
-
-
 # dirs
 root_dir="$(dirname "${BASH_SOURCE[0]}")"
 installs=`find $root_dir/installs -mindepth 1 -maxdepth 1 -executable`
 configs_dir="$root_dir/configs"
 configs=`find $root_dir/configs -mindepth 1 -maxdepth 1 -type d`
 
+copy_configs="0"
+
+while [[ $# > 0 ]]; do
+  if [[ "$1" == '--copy-configs' ]]; then
+    copy_configs="1"
+  fi
+  shift
+done
+
 log() {
     echo "$1"
 }
 
-# Install apps
-for script in $installs; do
-   if [ ! -d "$script" ]; then
-      log "executing script: $script"
-      $script
-   fi
-done
+# execute() {
+#   log "execute $@"
+#   if [[ $dry == "1" ]]; then
+#     return
+#   fi
+#   "$@"
+# }
 
-
-# copy configs
-for c in $configs; do
-    "copying: $c"
-    cp -r $c $HOME/.config/
-done
+# copy_dir() {
+#   from=$1
+#   to=$2
+#
+#   pushd $from > /dev/null
+#     dirs=$(find . -mindepth 1 -maxdepth 1 -type d)
+#     for d in $dir; do
+#       execute rm -rf $to/$dir
+#       execute cp -r $dir $to/$dir
+#     done
+#   popd $from
+# }
 
 copy() {
     log "removing $2"
@@ -39,6 +48,30 @@ copy() {
     cp $1 $2
 }
 
+# Install apps
+if [[ $copy_configs != "1" ]]; then
+
+  # system update
+  sudo apt -y update && sudo apt -y upgrade
+
+  # required pkgs
+  sudo apt -y install curl git wget unzip cmake gettext lua5.1 liblua5.1-0-dev python3-pip xclip ripgrep btop fd-find tldr
+
+  for script in $installs; do
+     if [ ! -d "$script" ]; then
+        log "executing script: $script"
+        $script
+     fi
+  done
+fi
+
+# copy configs
+for c in $configs; do
+    "copying: $c"
+    cp -rf $c $HOME/.config/
+done
+
+# individual configs
 copy "$configs_dir/.zsh_profile" ~/.zsh_profile
 copy "$configs_dir/.zshrc" ~/.zshrc
 copy "$configs_dir/.gitconfig" ~/.gitconfig

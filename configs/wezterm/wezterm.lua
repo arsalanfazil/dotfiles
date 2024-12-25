@@ -15,8 +15,8 @@ config.default_prog = { "tmux" }
 
 
 wezterm.on("gui-startup", function()
-    local tab, pane, window = mux.spawn_window(cmd or {})
-    window:gui_window():toggle_fullscreen()
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():toggle_fullscreen()
 end)
 
 return config

@@ -1,35 +1,159 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
-    build = ":TSUpdate",
-    config = function()
-        require('nvim-treesitter.configs').setup({
-            ensure_installed = { "javascript", "typescript", "c", "lua", "rust", "astro", "bash", "css", "dockerfile", "eex", "elixir", "erlang", "heex", "html", "json", "jsdoc", "ruby", "scss", "sql", "yaml" },
-            sync_install = false,
-            auto_install = true,
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = { "markdown" },
-                disable = function(lang, buf)
-                    if lang == "html" then
-                        print("disabled")
-                        return true
-                    end
+  'nvim-treesitter/nvim-treesitter',
+  event = 'VeryLazy',
+  build = function()
+    require('nvim-treesitter.install').update({ with_sync = true })
+  end,
+  dependencies = {
+    -- { 'nvim-treesitter/playground', cmd = "TSPlaygroundToggle" },
+    -- {
+    --   'JoosepAlviste/nvim-ts-context-commentstring',
+    --   opts = {
+    --     languages = {
+    --       php_only = '// %s',
+    --       php = '// %s',
+    --       -- blade = '{{-- %s --}}',
+    --       -- blade = {
+    --       --   __default = '{{-- %s --}}',
+    --       --   html = '{{-- %s --}}',
+    --       --   blade = '{{-- %s --}}',
+    --       --   php = '// %s',
+    --       --   php_only = '// %s',
+    --       -- }
+    --     },
+    --     custom_calculation = function (node, language_tree)
+    --       -- print(language_tree:lang())
+    --       -- print(node:type())
+    --       print(vim.bo.filetype)
+    --       print(language_tree._lang)
+    --       print('----')
+    --       if vim.bo.filetype == 'blade' then
+    --         if language_tree._lang == 'html' then
+    --           return '{{-- %s --}}'
+    --         else
+    --           return '// %s'
+    --         end
+    --       end
+    --       -- if vim.bo.filetype == 'blade' and language_tree._lang ~= 'javascript' and language_tree._lang ~= 'php' then
+    --       --   return '{{-- %s --}}'
+    --       -- end
+    --     end,
+    --   },
+    -- },
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
+  main = 'nvim-treesitter.configs',
+  opts = {
+    ensure_installed = {
+      "typescript",
+      "c",
+      "astro",
+      "bash",
+      "dockerfile",
+      "eex",
+      "elixir",
+      "erlang",
+      "heex",
+      "jsdoc",
+      "scss",
+      'arduino',
+      'bash',
+      'blade',
+      'comment',
+      'css',
+      'diff',
+      'dockerfile',
+      'git_config',
+      'git_rebase',
+      'gitattributes',
+      'gitcommit',
+      'gitignore',
+      'go',
+      'html',
+      'http',
+      'ini',
+      'javascript',
+      'json',
+      'jsonc',
+      'lua',
+      'make',
+      'markdown',
+      'passwd',
+      'php',
+      'php_only',
+      'phpdoc',
+      'python',
+      'regex',
+      'ruby',
+      'rust',
+      'sql',
+      'svelte',
+      'typescript',
+      'vim',
+      'vue',
+      'xml',
+      'yaml',
+    },
+    auto_install = true,
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = { "markdown" },
+      disable = function(lang, buf)
+        if lang == "html" then
+          print("disabled")
+          return true
+        end
 
-                    local max_filesize = 100 * 1024                 -- 100 KB
-                    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                    if ok and stats and stats.size > max_filesize then
-                        vim.notify(
-                            "File larger than 100KB treesitter disabled for performance",
-                            vim.log.levels.WARN,
-                            { title = "Treesitter" }
-                        )
-                        return true
-                    end
-                end,
-            },
-            indent = {
-                enable = true
-            },
-        })
-    end
+        local max_filesize = 100 * 1024 -- 100 KB
+        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+        if ok and stats and stats.size > max_filesize then
+          vim.notify(
+            "File larger than 100KB treesitter disabled for performance",
+            vim.log.levels.WARN,
+            { title = "Treesitter" }
+          )
+          return true
+        end
+      end,
+    },
+    indent = {
+      enable = true,
+      disable = { "yaml" }
+    },
+    rainbow = {
+      enable = true,
+    },
+    textobjects = {
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+          ['if'] = '@function.inner',
+          ['af'] = '@function.outer',
+          ['ia'] = '@parameter.inner',
+          ['aa'] = '@parameter.outer',
+        },
+      },
+    },
+  },
+  config = function(_, opts)
+    local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+
+    parser_config.blade = {
+      install_info = {
+        url = "https://github.com/EmranMR/tree-sitter-blade",
+        files = { "src/parser.c" },
+        branch = "main",
+      },
+      filetype = "blade"
+    }
+
+    vim.filetype.add({
+      pattern = {
+        ['.*%.blade%.php'] = 'blade',
+      },
+    })
+
+    require('nvim-treesitter.configs').setup(opts)
+  end,
 }
