@@ -18,6 +18,7 @@ alias gco="git checkout"
 alias doc="docker"
 
 alias livebook="cd ~/livebook && MIX_ENV=prod mix phx.server"
+alias cursor="/opt/cursor.appimage"
 
 
 ## All that sweet sweet fzf
