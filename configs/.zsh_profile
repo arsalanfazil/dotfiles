@@ -17,6 +17,8 @@ alias gco="git checkout"
 
 alias doc="docker"
 
+alias livebook="cd ~/livebook && MIX_ENV=prod mix phx.server"
+
 
 ## All that sweet sweet fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -25,6 +27,7 @@ alias doc="docker"
 export GIT_EDITOR=$VIM
 export DEV_CODE="$HOME/code"
 export PATH="$HOME/.cache/rebar3/bin:$PATH"
+export ELIXIR_ERL_OPTIONS="-epmd_module Elixir.Livebook.EPMD"
 
 # Where should I put you?
 # bindkey -s ^f "tmux-sessionizer\n"

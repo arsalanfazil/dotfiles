@@ -46,20 +46,34 @@ return {
           }
         end,
 
-        -- ◍ typescript-language-server ts_ls
-        -- ◍ json-lsp jsonls
-        -- ◍ bash-language-server bashls
-        -- ◍ css-lsp cssls
-        -- ◍ css-variables-language-server css_variables
-        -- ◍ docker-compose-language-service docker_compose_language_service
-        -- ◍ dockerfile-language-server dockerls
-        -- ◍ elixir-ls elixirls
-        -- ◍ emmet-language-server emmet_language_server
-        -- ◍ html-lsp html
-        -- ◍ intelephense
-        -- ◍ lua-language-server lua_ls
-        -- ◍ stimulus-language-server stimulus_ls
-        -- ◍ tailwindcss-language-server tailwindcss
+        ["tailwindcss"] = function()
+          local lspconfig = require("lspconfig")
+          lspconfig.tailwindcss.setup({
+            capabilities = capabilities,
+            classAttributes = { "class", "className", "class:list", "classList" },
+            includeLanguages = {
+              eelixir = "html-eex",
+              elixir = "html-eex",
+              heex = "html-eex",
+              eruby = "erb",
+              css = "css",
+              javascript = "html",
+              javascriptreact = "html",
+              php = "html",
+              blade = "html"
+            },
+            lint = {
+              cssConflict = "warning",
+              invalidApply = "error",
+              invalidConfigPath = "error",
+              invalidScreen = "error",
+              invalidTailwindDirective = "error",
+              invalidVariant = "error",
+              recommendedVariantOrder = "warning"
+            },
+            validate = true
+          })
+        end,
 
         ["ruby_lsp"] = function()
           local lspconfig = require("lspconfig")
@@ -136,5 +150,4 @@ return {
       },
     })
   end
-
 }
