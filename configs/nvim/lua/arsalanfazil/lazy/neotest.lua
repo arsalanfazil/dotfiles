@@ -6,13 +6,11 @@ return {
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
     "jfpedroza/neotest-elixir",
-    "olimorris/neotest-phpunit",
   },
   config = function()
     require("neotest").setup({
       adapters = {
         require("neotest-elixir"),
-        require("neotest-phpunit")
       },
     })
   end

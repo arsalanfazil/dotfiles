@@ -10,15 +10,10 @@ return {
         "erlang",
         "heex",
         "scss",
-        -- 'blade',
         'dockerfile',
         'gitignore',
         'html',
         'json',
-        -- 'php',
-        -- 'php_only',
-        -- 'phpdoc',
-        'ruby',
         'vim',
         "vimdoc", "javascript", "typescript", "c", "lua",
         "jsdoc", "bash",
@@ -63,16 +58,5 @@ return {
         additional_vim_regex_highlighting = { "markdown" },
       },
     })
-
-    local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-    treesitter_parser_config.templ = {
-      install_info = {
-        url = "https://github.com/vrischmann/tree-sitter-templ.git",
-        files = { "src/parser.c", "src/scanner.c" },
-        branch = "master",
-      },
-    }
-
-    vim.treesitter.language.register("templ", "templ")
   end
 }

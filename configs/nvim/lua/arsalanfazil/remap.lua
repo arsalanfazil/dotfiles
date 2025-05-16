@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- move lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -10,10 +10,6 @@ vim.keymap.set('v', '>', '>gv')
 
 -- register paste
 vim.keymap.set('v', 'p', '"_dP')
-
--- for php, insert semi-colon at end of line.
-vim.keymap.set('n', ';;', '<Esc>A;')
-vim.keymap.set('n', ',,', '<Esc>A,')
 
 -- copy/paste mapping
 -- vim.keymap.set("v", "<C-c>", '"+y')

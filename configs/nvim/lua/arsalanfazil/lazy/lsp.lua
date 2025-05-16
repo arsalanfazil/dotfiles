@@ -11,20 +11,10 @@ return {
 
   config = function()
     require("conform").setup({
-      format_on_save = {
-        -- These options will be passed to conform.format()
-        -- async = true,
-        timeout_ms = 2500,
-        lsp_format = "fallback",
-      },
       formatters_by_ft = {
-        php = { "php_cs_fixer" },
         javascript = { "standardjs" },
         javascriptreact = { "standardjs" }
       },
-      env = {
-        PHP_CS_FIXER_IGNORE_ENV = 1
-      }
     })
     local cmp = require('cmp')
     local cmp_lsp = require("cmp_nvim_lsp")
@@ -37,8 +27,7 @@ return {
     require("fidget").setup({})
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = {
-      },
+      ensure_installed = {},
       handlers = {
         function(server_name) -- default handler (optional)
           require("lspconfig")[server_name].setup {
@@ -55,12 +44,9 @@ return {
               eelixir = "html-eex",
               elixir = "html-eex",
               heex = "html-eex",
-              eruby = "erb",
               css = "css",
               javascript = "html",
               javascriptreact = "html",
-              php = "html",
-              blade = "html"
             },
             lint = {
               cssConflict = "warning",
@@ -75,17 +61,6 @@ return {
           })
         end,
 
-        ["ruby_lsp"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.ruby_lsp.setup({
-            capabilities = capabilities,
-            init_options = {
-              formatter = "standard",
-              linters = { "standard" },
-            },
-          })
-        end,
-
         ["elixirls"] = function()
           local lspconfig = require("lspconfig")
           lspconfig.elixirls.setup({
@@ -95,29 +70,10 @@ return {
           })
         end,
 
-        ["intelephense"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.intelephense.setup({
-            cmd = { 'intelephense', '--stdio' },
-            filetypes = { 'php' },
-            root_dir = function()
-              return vim.loop.cwd()
-            end,
-            settings = {
-              intelephense = {
-                files = {
-                  maxSize = 1000000,
-                }
-              }
-            },
-            capabilities = capabilities
-          })
-        end,
-
         ["emmet_language_server"] = function()
           local lspconfig = require("lspconfig")
           lspconfig.emmet_language_server.setup({
-            filetypes = { "css", "heex", "elixir", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", 'php', 'blade' },
+            filetypes = { "css", "heex", "elixir", "html", "javascript", "javascriptreact", "sass", "scss", "typescriptreact" },
             capabilities = capabilities,
           })
         end,
