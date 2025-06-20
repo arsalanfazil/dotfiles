@@ -53,11 +53,10 @@ return {
         }
       }
 
-
       vim.lsp.enable('emmet_language_server')
       lspconfig.emmet_language_server.setup({
         capabilities = capabilities,
-        filetypes = { "css", "html", "javascript", "javascriptreact", "sass", "scss", "typescriptreact", "eex", "heex", "html-eex" },
+        filetypes = { "css", "html", "javascript", "javascriptreact", "sass", "scss", "typescriptreact", "eex", "heex", "html-eex", "elixir", "svelte" },
       })
 
       vim.lsp.enable('elixirls')
@@ -78,6 +77,7 @@ return {
           css = "css",
           javascript = "html",
           javascriptreact = "html",
+          svelte = "html"
         },
         lint = {
           cssConflict = "warning",
@@ -92,12 +92,18 @@ return {
       })
 
 
-      require("conform").setup({
-        formatters_by_ft = {
-          javascript = { "standardjs" },
-          javascriptreact = { "standardjs" }
-        }
+      vim.lsp.enable('svelte')
+      lspconfig.svelte.setup({
+        capabilities = capabilities,
       })
+
+
+      -- require("conform").setup({
+      --   formatters_by_ft = {
+      --     javascript = { "standardjs" },
+      --     javascriptreact = { "standardjs" }
+      --   }
+      -- })
 
       require("fidget").setup({})
 

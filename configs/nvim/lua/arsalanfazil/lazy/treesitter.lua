@@ -15,8 +15,14 @@ return {
         'html',
         'json',
         'vim',
-        "vimdoc", "javascript", "typescript", "c", "lua",
-        "jsdoc", "bash",
+        "vimdoc",
+        "javascript",
+        "typescript",
+        "svelte",
+        "c",
+        "lua",
+        "jsdoc",
+        "bash",
       },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)

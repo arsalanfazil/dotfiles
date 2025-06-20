@@ -55,3 +55,6 @@ end)
 vim.keymap.set("n", "<leader>tf", function()
   require("neotest").run.run(vim.fn.expand("%"))
 end)
+
+-- open neovim tree
+vim.keymap.set('n', '<leader>b', ":NvimTreeToggle<CR>")
